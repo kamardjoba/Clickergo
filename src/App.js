@@ -6,9 +6,6 @@ import Modal from './modal';
 import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
 import './App.css';
 
-
-
-
 function App() {
   const [coins, setCoins] = useState(() => {
     const savedCoins = localStorage.getItem('coins');
@@ -30,6 +27,8 @@ function App() {
     localStorage.setItem('userId', newUserId);
     return newUserId;
   });
+
+  const [referralLink, setReferralLink] = useState('');
 
   const [coinPerClick, setCoinPerClick] = useState(() => {
     const savedCoinPerClick = localStorage.getItem('coinPerClick');
@@ -168,6 +167,8 @@ function App() {
   };
 
   const handleReferal = () => {
+    const link = `https://t.me/your_telegram_bot?start=${userId}`;
+    setReferralLink(link);
     setIsReferalOpen(true);
   };
 
@@ -262,6 +263,7 @@ function App() {
         {isReferalOpen && (
             <ReferalModal
                 userId={userId}
+                referralLink={referralLink}
                 onClose={handleCloseReferalModal}
             />
         )}
