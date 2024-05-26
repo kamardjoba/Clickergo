@@ -1,3 +1,4 @@
+/* App.css */
 .App {
   text-align: center;
   position: relative;
@@ -6,6 +7,10 @@
   flex-direction: column;
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
+  width: 100vw; /* Добавьте это */
+  height: 100vh; /* Добавьте это */
+  overflow: hidden; /* Убедитесь, что нет прокрутки */
+  margin: 0; /* Убедитесь, что нет внешних отступов */
 }
 
 .App-header {
