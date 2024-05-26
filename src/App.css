@@ -20,7 +20,7 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 button, .boost, .earn {
@@ -49,7 +49,7 @@ button, .boost, .earn {
 
 .progress-bar-container {
   position: absolute;
-  bottom: 20px;
+  bottom: 80px; /* Подняли прогресс-бар выше */
   left: 0;
   width: 100%;
   padding: 0 20px;
