@@ -1,63 +1,58 @@
 .shop {
-    background: linear-gradient(135deg, #1e1e1e, #333);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
-    margin: 20px auto;
-    color: white;
-    text-align: center;
-}
-
-.shop h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.section, .section-menu {
-    background: linear-gradient(135deg, #333, #1e1e1e);
+    border: 1px solid #ccc;
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-.section p, .info p, .section-menu p {
-    margin: 10px 0;
-    font-size: 18px;
-}
-
-.main-info {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-button {
-    background: linear-gradient(135deg, #ff9a00, #ff6600);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .shop button {
     margin-top: 10px;
-    transition: background 0.3s, transform 0.3s;
-}
+	  background: linear-gradient(to right, #24FE41, #FDFC47);
+    color: #555;
+    cursor: pointer;
+	  font-size: 20px;
+	  font-weight: bold;
+	  width: 90%;
+	  padding: 10px;
+	  margin:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #clouseButtom{
+	background: red;
+	color: black;
+  }
 
-button:hover {
-    background: linear-gradient(135deg, #ff6600, #ff3300);
-    transform: translateY(-2px);
-}
+  #CoinPerTap{
+    background: #282C34;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    color:white;
+  }
 
-button:disabled {
-    background: #555;
-    cursor: not-allowed;
-}
+  #BuyCoinPerTapMenu{
+    background: #5b5e64;
+    text-align: center;
+    border-radius: 10px;
+  }
 
-.close-button {
-    background: linear-gradient(135deg, #ff3300, #ff0000);
-    margin-top: 20px;
-}
+  #CoinPerTapInfo{
+    width: 50%;
+    background: #525356;
+    float: left;
+    text-align: center;
+    margin: 0;
+  }
 
-.close-button:hover {
-    background: linear-gradient(135deg, #ff0000, #cc0000);
-}
+  #MainInfo{
+	  font-size: 48px;
+	  margin: 0;
+  }
