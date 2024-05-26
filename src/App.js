@@ -6,19 +6,75 @@ import Modal from './modal';
 import './App.css';
 
 function App() {
-  const [coins, setCoins] = useState(0);
+  const [coins, setCoins] = useState(() => {
+    const savedCoins = localStorage.getItem('coins');
+    return savedCoins ? parseInt(savedCoins, 10) : 0;
+  });
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [clicks, setClicks] = useState(1000);
+  const [clicks, setClicks] = useState(() => {
+    const savedClicks = localStorage.getItem('clicks');
+    return savedClicks ? parseInt(savedClicks, 10) : 1000;
+  });
   const [userId, setUserId] = useState(null);
 
-  const [coinPerClick, setCoinPerClick] = useState(1);
-  const [upgradeCost, setUpgradeCost] = useState(10);
-  const [upgradeLevel, setUpgradeLevel] = useState(1);
+  const [coinPerClick, setCoinPerClick] = useState(() => {
+    const savedCoinPerClick = localStorage.getItem('coinPerClick');
+    return savedCoinPerClick ? parseInt(savedCoinPerClick, 10) : 1;
+  });
+  const [upgradeCost, setUpgradeCost] = useState(() => {
+    const savedUpgradeCost = localStorage.getItem('upgradeCost');
+    return savedUpgradeCost ? parseInt(savedUpgradeCost, 10) : 10;
+  });
+  const [upgradeLevel, setUpgradeLevel] = useState(() => {
+    const savedUpgradeLevel = localStorage.getItem('upgradeLevel');
+    return savedUpgradeLevel ? parseInt(savedUpgradeLevel, 10) : 1;
+  });
 
-  const [clickLimit, setClickLimit] = useState(1000);
-  const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
-  const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
+  const [clickLimit, setClickLimit] = useState(() => {
+    const savedClickLimit = localStorage.getItem('clickLimit');
+    return savedClickLimit ? parseInt(savedClickLimit, 10) : 1000;
+  });
+  const [upgradeCostEnergy, setupgradeCostEnergy] = useState(() => {
+    const savedUpgradeCostEnergy = localStorage.getItem('upgradeCostEnergy');
+    return savedUpgradeCostEnergy ? parseInt(savedUpgradeCostEnergy, 10) : 500;
+  });
+  const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(() => {
+    const savedUpgradeLevelEnergy = localStorage.getItem('upgradeLevelEnergy');
+    return savedUpgradeLevelEnergy ? parseInt(savedUpgradeLevelEnergy, 10) : 1;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('coins', coins);
+  }, [coins]);
+
+  useEffect(() => {
+    localStorage.setItem('clicks', clicks);
+  }, [clicks]);
+
+  useEffect(() => {
+    localStorage.setItem('coinPerClick', coinPerClick);
+  }, [coinPerClick]);
+
+  useEffect(() => {
+    localStorage.setItem('upgradeCost', upgradeCost);
+  }, [upgradeCost]);
+
+  useEffect(() => {
+    localStorage.setItem('upgradeLevel', upgradeLevel);
+  }, [upgradeLevel]);
+
+  useEffect(() => {
+    localStorage.setItem('clickLimit', clickLimit);
+  }, [clickLimit]);
+
+  useEffect(() => {
+    localStorage.setItem('upgradeCostEnergy', upgradeCostEnergy);
+  }, [upgradeCostEnergy]);
+
+  useEffect(() => {
+    localStorage.setItem('upgradeLevelEnergy', upgradeLevelEnergy);
+  }, [upgradeLevelEnergy]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,7 +103,7 @@ function App() {
   };
 
   const handleCoinClick = () => {
-    if (clicks > 0) {
+    if (clicks >= coinPerClick) {
       setCoins(coins + coinPerClick);
       setClicks(clicks - coinPerClick);
     }
@@ -107,7 +163,7 @@ function App() {
           <p>Монет за клик: {coinPerClick}</p>
         </header>
         <div className="coin-container">
-          <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} />
+          <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} clicks={clicks} />
         </div>
         <div className="progress-bar-container">
           <ProgressBar current={clicks} max={clickLimit} />

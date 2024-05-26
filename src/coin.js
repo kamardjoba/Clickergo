@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import coinImage from './coin.png';
 import './coin.css';
 
-const Coin = ({ onClick, coinPerClick }) => {
-  const [clicks, setClicks] = useState([]);
+const Coin = ({ onClick, coinPerClick, clicks }) => {
+  const [clicksArray, setClicksArray] = useState([]);
 
   const handleMouseDown = (event) => {
     const rect = event.target.getBoundingClientRect();
@@ -21,11 +21,13 @@ const Coin = ({ onClick, coinPerClick }) => {
   };
 
   const handleCoinClick = (event) => {
+    if (clicks < coinPerClick) return;
+
     const rect = event.target.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
 
-    setClicks((prevClicks) => [
+    setClicksArray((prevClicks) => [
       ...prevClicks,
       { id: Date.now(), x, y, value: coinPerClick },
     ]);
@@ -43,7 +45,7 @@ const Coin = ({ onClick, coinPerClick }) => {
         >
           <img src={coinImage} alt="Coin" />
           <AnimatePresence>
-            {clicks.map((click) => (
+            {clicksArray.map((click) => (
                 <motion.div
                     key={click.id}
                     className="click-value"
