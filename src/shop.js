@@ -22,11 +22,11 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
       </div>
 
       <div id="CoinPerTap">
-        <p>Монет за клик </p>
+        <p>Енергия</p>
         <div id="BuyCoinPerTapMenu">
           <p id="MainInfo">{coinPerClick}</p>
           <div id="CoinPerTapInfo">
-            <p>ровень улучшения: {upgradeLevel}</p>
+            <p>Уровень улучшения: {upgradeLevel}</p>
           </div>
           <div id="CoinPerTapInfo">
             <p>Стоимость улучшения: {upgradeCost}</p>
