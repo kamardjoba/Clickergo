@@ -14,19 +14,19 @@
     font-size: 24px;
 }
 
-#CoinPerTap, #BuyCoinPerTapMenu {
+.section, .section-menu {
     background: linear-gradient(135deg, #333, #1e1e1e);
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 20px;
 }
 
-#CoinPerTap p, #CoinPerTapInfo p, #BuyCoinPerTapMenu p {
+.section p, .info p, .section-menu p {
     margin: 10px 0;
     font-size: 18px;
 }
 
-#MainInfo {
+.main-info {
     font-size: 36px;
     margin-bottom: 10px;
 }
@@ -53,11 +53,11 @@ button:disabled {
     cursor: not-allowed;
 }
 
-#clouseButtom {
+.close-button {
     background: linear-gradient(135deg, #ff3300, #ff0000);
     margin-top: 20px;
 }
 
-#clouseButtom:hover {
+.close-button:hover {
     background: linear-gradient(135deg, #ff0000, #cc0000);
 }
