@@ -40,8 +40,8 @@ function App() {
     }
   };
 
-  const handleUpgradeEnergy = () =>{
-    if (coins >= upgradeCostEnergy){
+  const handleUpgradeEnergy = () => {
+    if (coins >= upgradeCostEnergy) {
       setCoins(coins - upgradeCostEnergy);
       setLimitEnergy(clickLimit * 2);
       setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
@@ -67,6 +67,11 @@ function App() {
                 coinPerClick={coinPerClick}
                 upgradeCost={upgradeCost}
                 upgradeLevel={upgradeLevel}
+                
+                clickLimit = {clickLimit}
+                upgradeCostEnergy = {upgradeCostEnergy}
+                upgradeLevelEnergy = {upgradeLevelEnergy}
+                
                 onClose={handleCloseShop}
                 onUpgrade={handleUpgrade}
                 onUpgradeEnergy={handleUpgradeEnergy}
