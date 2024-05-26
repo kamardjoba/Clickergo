@@ -97,5 +97,13 @@ button, .boost, .earn {
   align-items: center;
   flex-grow: 1; /* Это заставляет контейнер занимать доступное пространство */
 }
+/* Добавьте это в конец файла App.css */
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin-top: -150px; /* Поднимает контейнер с монетой выше */
+}
 
   
