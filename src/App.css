@@ -38,17 +38,17 @@
 
 .controls {
   display: flex;
-  justify-content: flex-end; /* Выровняли кнопки вправо */
+  justify-content: flex-end;
   position: absolute;
   bottom: 30px; /* Подняли кнопки, чтобы они лежали на прогресс-баре */
-  right: 20px; /* Отступ справа */
-  width: calc(90% - 20px); /* Убедились, что ширина соответствует прогресс-бару */
+  left: 20%; /* Переместили кнопки на 20% влево */
+  width: 60%; /* Убедились, что ширина соответствует прогресс-бару */
 }
 
 button, .boost, .earn, .referal {
-  margin: 0 5px; /* Добавили пространство между кнопками */
-  padding: 8px 12px; /* Уменьшили размер кнопок */
-  font-size: 14px; /* Уменьшили размер текста */
+  margin: 0 2px; /* Минимальное расстояние между кнопками */
+  padding: 8px 12px; /* Размер кнопок */
+  font-size: 14px; /* Размер текста */
   cursor: pointer;
   border: none;
   border-radius: 10px;

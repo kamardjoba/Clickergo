@@ -9,6 +9,16 @@ import './App.css';
 import coinImage from './CoinUp.png'; // Обновите путь к вашей иконке монеты
 
 function App() {
+  useEffect(() => {
+    const metaViewport = document.createElement('meta');
+    metaViewport.name = "viewport";
+    metaViewport.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+    document.head.appendChild(metaViewport);
+    return () => {
+      document.head.removeChild(metaViewport);
+    };
+  }, []);
+
   const [coins, setCoins] = useState(() => {
     const savedCoins = localStorage.getItem('coins');
     return savedCoins ? parseInt(savedCoins, 10) : 0;
