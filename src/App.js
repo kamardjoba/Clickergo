@@ -51,7 +51,7 @@ function App() {
   };
   
   return (
-      <div className="App">
+      <body>
         <header className="App-header">
           <h1>Кликер Игра</h1>
           <p>Монеты: {coins}</p>
@@ -77,7 +77,7 @@ function App() {
                 onUpgradeEnergy={handleUpgradeEnergy}
             />
         )}
-      </div>
+      </body>
   );
 }
 
