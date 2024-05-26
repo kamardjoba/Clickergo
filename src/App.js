@@ -19,16 +19,8 @@ function App() {
       window.Telegram.WebApp.expand();
     }
 
-    const handleResize = () => {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
     return () => {
       document.head.removeChild(metaViewport);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -246,14 +238,23 @@ function App() {
   };
 
   useEffect(() => {
-    const coinElement = document.querySelector('.coin-container');
     const handleTouchStart = (event) => {
       handleCoinClick();
       event.preventDefault();
     };
+
+    const handleClick = (event) => {
+      handleCoinClick();
+      event.preventDefault();
+    };
+
+    const coinElement = document.querySelector('.coin-container');
     coinElement.addEventListener('touchstart', handleTouchStart);
+    coinElement.addEventListener('click', handleClick);
+
     return () => {
       coinElement.removeEventListener('touchstart', handleTouchStart);
+      coinElement.removeEventListener('click', handleClick);
     };
   }, [clicks, coinPerClick]);
 
