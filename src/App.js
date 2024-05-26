@@ -38,6 +38,7 @@ function App() {
       setUpgradeLevel(upgradeLevel + 1);
       setUpgradeCost(Math.floor(upgradeCost * 1.5));
     }
+  };
 
   const handleUpgradeEnergy = () =>{
     if (coins >= upgradeCostEnergy){
@@ -46,9 +47,9 @@ function App() {
       setUpgradeLevel(upgradeLevelEnergy + 1);
       setupgradeCostEnerg(Math.floor(upgradeCostEnergy * 1.5));
     }
-  }
   };
-
+  
+  
   return (
       <div className="App">
         <header className="App-header">
