@@ -3,7 +3,7 @@ import './shop.css';
 
 const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy }) => {
   return (
-    <div className="shop">
+    <div class="shop">
       <h2>Магазин</h2>
       <div id="CoinPerTap">
         <p>Монет за клик </p>
@@ -37,7 +37,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
         </div>
       </div>
 
-      <button onClick={onClose}>Закрыть</button>
+      <button onClick={onClose} id="clouseButtom">Закрыть</button>
 
     </div>
   );
