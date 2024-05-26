@@ -44,8 +44,8 @@ function App() {
     if (coins >= upgradeCostEnergy){
       setCoins(coins - upgradeCostEnergy);
       setLimitEnergy(clickLimit * 2);
-      setUpgradeLevel(upgradeLevelEnergy + 1);
-      setupgradeCostEnerg(Math.floor(upgradeCostEnergy * 1.5));
+      setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
+      setupgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
   };
   

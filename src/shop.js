@@ -1,7 +1,7 @@
 import React from 'react';
 import './shop.css';
 
-const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, clickLimit }) => {
+const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, clickLimit, upgradeLevelEnergy, upgradeCostEnergy }) => {
   return (
     <div className="shop">
       <h2>Магазин</h2>
