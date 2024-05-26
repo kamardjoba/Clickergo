@@ -22,6 +22,20 @@
   align-items: center;
 }
 
+.coin-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem; /* Увеличили размер текста */
+  color: white;
+}
+
+.coin-display img {
+  width: 50px; /* Размер иконки монеты */
+  height: 50px;
+  margin-right: 10px; /* Отступ между иконкой и текстом */
+}
+
 .controls {
   display: flex;
   justify-content: flex-end;
@@ -29,6 +43,8 @@
   position: absolute;
   bottom: 60px;
   right: 20px;
+  width: 100%;
+  padding: 0 20px;
 }
 
 button, .boost, .earn, .referal {
@@ -67,13 +83,13 @@ button, .boost, .earn, .referal {
 }
 
 .progress-bar {
-  width: 95%;
+  width: 90%; /* Уменьшили ширину до 90% */
   height: 30px;
   background-color: transparent;
   border-radius: 15px;
   overflow: hidden;
   margin-top: 10px;
-  margin-right: 5%;
+  margin-right: 5%; /* Убедились, что отступ справа совпадает с левым */
   position: relative;
 }
 

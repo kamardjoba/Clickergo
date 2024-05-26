@@ -6,6 +6,7 @@ import ProgressBar from './ProgressBar';
 import Modal from './modal';
 import ReferalModal from './ReferalModal';
 import './App.css';
+import coinImage from './path_to_your_coin_image.png'; // Обновите путь к вашей иконке монеты
 
 function App() {
   const [coins, setCoins] = useState(() => {
@@ -225,7 +226,10 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1>Кликер Игра</h1>
-          <p>Монеты: {coins}</p>
+          <div className="coin-display">
+            <img src={coinImage} alt="Coin" />
+            <span>{coins}</span>
+          </div>
           <p>Монет за клик: {coinPerClick}</p>
         </header>
         <div className="coin-container">
