@@ -7,39 +7,45 @@ function App() {
   const [coins, setCoins] = useState(0);
   const [coinPerClick, setCoinPerClick] = useState(1);
   const [isShopOpen, setIsShopOpen] = useState(false);
-
-  const handleOpenShop = () => {
-    setIsShopOpen(true);
-  };
+  const [upgradeCost, setUpgradeCost] = useState(10);
+  const [upgradeLevel, setUpgradeLevel] = useState(1);
 
   const handleCoinClick = () => {
     setCoins(coins + coinPerClick);
   };
 
-  
+  const handleOpenShop = () => {
+    setIsShopOpen(true);
+  };
 
   const handleCloseShop = () => {
     setIsShopOpen(false);
   };
 
-  const handleUpgrade = (newCoinPerClick, newCost) => {
-    setCoins(coins - newCost);
-    setCoinPerClick(newCoinPerClick);
+  const handleUpgrade = () => {
+    if (coins >= upgradeCost) {
+      setCoins(coins - upgradeCost);
+      setCoinPerClick(coinPerClick + 1);
+      setUpgradeLevel(upgradeLevel + 1);
+      setUpgradeCost(Math.floor(upgradeCost * 1.5));
+    }
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Clicker Game</h1>
-        <p>Coins: {coins}</p>
-        <p>Coins per click: {coinPerClick}</p>
+        <h1>Кликер Игра</h1>
+        <p>Монеты: {coins}</p>
+        <p>Монет за клик: {coinPerClick}</p>
         <Coin onClick={handleCoinClick} />
-        <button onClick={handleOpenShop}>Shop</button>
+        <button onClick={handleOpenShop}>Магазин</button>
       </header>
       {isShopOpen && (
         <Shop
           coins={coins}
           coinPerClick={coinPerClick}
+          upgradeCost={upgradeCost}
+          upgradeLevel={upgradeLevel}
           onClose={handleCloseShop}
           onUpgrade={handleUpgrade}
         />

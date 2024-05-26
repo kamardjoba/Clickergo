@@ -1,33 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './shop.css';
 
-const Shop = ({ coins, coinPerClick, onClose, onUpgrade }) => {
-  const [upgradeCost, setUpgradeCost] = useState(10);
-  const [upgradeLevel, setUpgradeLevel] = useState(1);
-
-  const handleUpgrade = () => {
-    if (coins >= upgradeCost) {
-      const newCoinPerClick = coinPerClick + 1;
-      const newUpgradeCost = Math.floor(upgradeCost * 1.5);
-      onUpgrade(newCoinPerClick, upgradeCost);
-      setUpgradeLevel(upgradeLevel + 1);
-      setUpgradeCost(newUpgradeCost);
-    }
-  };
-
+const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade }) => {
   return (
     <div className="shop">
-      <h2>Shop</h2>
-      <p>Upgrade Level: {upgradeLevel}</p>
-      <p>Coins per click: {coinPerClick}</p>
-      <p>Upgrade Cost: {upgradeCost}</p>
-      <button onClick={handleUpgrade} disabled={coins < upgradeCost}>
-        Upgrade
+      <h2>Магазин</h2>
+      <p>Уровень улучшения: {upgradeLevel}</p>
+      <p>Монет за клик: {coinPerClick}</p>
+      <p>Стоимость улучшения: {upgradeCost}</p>
+      <button onClick={onUpgrade} disabled={coins < upgradeCost}>
+        Улучшить
       </button>
-      <button onClick={onClose}>Close</button>
+      <button onClick={onClose}>Закрыть</button>
     </div>
   );
 };
-
 
 export default Shop;
