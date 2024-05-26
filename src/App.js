@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
+import Modal from './modal';
 import './App.css';
 
 function App() {
   const [coins, setCoins] = useState(0);
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);  // Добавляем состояние для модального окна
   const [clicks, setClicks] = useState(1000);  // Изначально 1000 кликов
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [userId, setUserId] = useState(null); // Здесь нужно получить user ID от Telegram
 
   const [coinPerClick, setCoinPerClick] = useState(1);
@@ -18,13 +19,6 @@ function App() {
   const [clickLimit, setLimitEnergy] = useState(1000);
   const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
   const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
-
-  useEffect(() => {
-    // Проверка подписки при загрузке
-    if (userId) {
-      checkSubscription();
-    }
-  }, [userId]);
 
   const checkSubscription = async () => {
     try {
@@ -37,9 +31,10 @@ function App() {
       });
 
       const data = await response.json();
-      setIsSubscribed(data.isMember);
+      return data.isMember;
     } catch (error) {
       console.error('Error checking subscription:', error.message);
+      return false;
     }
   };
 
@@ -76,29 +71,25 @@ function App() {
     }
   };
 
-  const handleEarn = async () => {
+  const handleEarn = () => {
+    setIsModalOpen(true);  // Открываем модальное окно при нажатии на Earn
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCheckSubscription = async () => {
     const isSubscribed = await checkSubscription();
 
     if (isSubscribed) {
       setCoins(coins + 5000);
       alert('Thank you for subscribing! You have earned 5000 coins.');
+      setIsModalOpen(false);
     } else {
-      alert('Please subscribe to our channel first: https://t.me/your_channel_id');
+      alert('Please subscribe to our channel first: https://t.me/GOGOGOGOGOGOGOGgogogooo');
     }
   };
-
-  if (!isSubscribed) {
-    return (
-        <div className="App">
-          <header className="App-header">
-            <h1>Подпишитесь на наш канал</h1>
-            <p>Для продолжения игры, пожалуйста, подпишитесь на наш Telegram канал.</p>
-            <a href="https://t.me/your_channel_id" target="_blank" rel="noopener noreferrer">Перейти к каналу</a>
-            <button onClick={checkSubscription}>Я подписался</button>
-          </header>
-        </div>
-    );
-  }
 
   return (
       <div className="App">
@@ -132,6 +123,12 @@ function App() {
                 onClose={handleCloseShop}
                 onUpgrade={handleUpgrade}
                 onUpgradeEnergy={handleUpgradeEnergy}
+            />
+        )}
+        {isModalOpen && (
+            <Modal
+                onClose={handleCloseModal}
+                onCheckSubscription={handleCheckSubscription}
             />
         )}
       </div>
