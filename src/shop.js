@@ -29,4 +29,5 @@ const Shop = ({ coins, coinPerClick, onClose, onUpgrade }) => {
   );
 };
 
+
 export default Shop;

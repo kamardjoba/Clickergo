@@ -13,6 +13,7 @@ const Coin = ({ onClick }) => {
     >
       <img src={coinImage} alt="Coin" />
     </motion.div>
+    
   );
 };
 
