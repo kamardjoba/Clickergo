@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Coin from './coin';
-import Shop from './shop';
-import ProgressBar from './ProgressBar';
+import React, { useState, useEffect } from 'react';
+import Coin from './components/Coin';
+import Shop from './components/Shop';
+import ProgressBar from './components/ProgressBar';
 import './App.css';
 
 function App() {
@@ -12,6 +12,30 @@ function App() {
   const [upgradeLevel, setUpgradeLevel] = useState(1);
   const [clicks, setClicks] = useState(0);
   const clickLimit = 1000;
+
+  // Загрузка сохраненного состояния при загрузке компонента
+  useEffect(() => {
+    const savedCoins = localStorage.getItem('coins');
+    const savedCoinPerClick = localStorage.getItem('coinPerClick');
+    const savedUpgradeCost = localStorage.getItem('upgradeCost');
+    const savedUpgradeLevel = localStorage.getItem('upgradeLevel');
+    const savedClicks = localStorage.getItem('clicks');
+
+    if (savedCoins !== null) setCoins(Number(savedCoins));
+    if (savedCoinPerClick !== null) setCoinPerClick(Number(savedCoinPerClick));
+    if (savedUpgradeCost !== null) setUpgradeCost(Number(savedUpgradeCost));
+    if (savedUpgradeLevel !== null) setUpgradeLevel(Number(savedUpgradeLevel));
+    if (savedClicks !== null) setClicks(Number(savedClicks));
+  }, []);
+
+  // Сохранение состояния при каждом изменении
+  useEffect(() => {
+    localStorage.setItem('coins', coins);
+    localStorage.setItem('coinPerClick', coinPerClick);
+    localStorage.setItem('upgradeCost', upgradeCost);
+    localStorage.setItem('upgradeLevel', upgradeLevel);
+    localStorage.setItem('clicks', clicks);
+  }, [coins, coinPerClick, upgradeCost, upgradeLevel, clicks]);
 
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
