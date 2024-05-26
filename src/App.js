@@ -38,27 +38,27 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Кликер Игра</h1>
-        <p>Монеты: {coins}</p>
-        <p>Монет за клик: {coinPerClick}</p>
-        <Coin onClick={handleCoinClick} />
-        <button onClick={handleOpenShop}>Магазин</button>
-        <ProgressBar current={clicks} max={clickLimit} />
-        <p>{clicks} / {clickLimit}</p>
-      </header>
-      {isShopOpen && (
-        <Shop
-          coins={coins}
-          coinPerClick={coinPerClick}
-          upgradeCost={upgradeCost}
-          upgradeLevel={upgradeLevel}
-          onClose={handleCloseShop}
-          onUpgrade={handleUpgrade}
-        />
-      )}
-    </div>
+      <div className="App">
+        <header className="App-header">
+          <h1>Кликер Игра</h1>
+          <p>Монеты: {coins}</p>
+          <p>Монет за клик: {coinPerClick}</p>
+          <Coin onClick={handleCoinClick} />
+          <button onClick={handleOpenShop}>Магазин</button>
+          <ProgressBar current={clicks} max={clickLimit} />
+          <p>{clicks} / {clickLimit}</p>
+        </header>
+        {isShopOpen && (
+            <Shop
+                coins={coins}
+                coinPerClick={coinPerClick}
+                upgradeCost={upgradeCost}
+                upgradeLevel={upgradeLevel}
+                onClose={handleCloseShop}
+                onUpgrade={handleUpgrade}
+            />
+        )}
+      </div>
   );
 }
 
