@@ -2,7 +2,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-30%, -30%);
+    transform: translate(-50%, -50%);
     background: white;
     padding: 20px;
     border: 1px solid #ccc;
@@ -17,4 +17,16 @@
   }
 #CoinPerTap{
   background: blue;
+  height: 100vh;
+  width: 100%;
+}
+
+#BuyCoinPerTapMenu{
+  float: left;
+  background: red;
+}
+
+#CoinPerTapInfo{
+  width: 50%;
+  background: plum;
 }

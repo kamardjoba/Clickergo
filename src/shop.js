@@ -6,12 +6,20 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
     <div className="shop">
       <h2>Магазин</h2>
       <div id="CoinPerTap">
-        <p>Уровень улучшения: {upgradeLevel}</p>
-        <p>Монет за клик: {coinPerClick}</p>
-        <p>Стоимость улучшения: {upgradeCost}</p>
-        <button onClick={onUpgrade} disabled={coins < upgradeCost}>
-          Улучшить
-        </button>
+        <p>Монет за клик </p>
+        <div id="BuyCoinPerTapMenu">
+          <p>{coinPerClick}</p>
+          <div id="CoinPerTapInfo">
+            <p>ровень улучшения: {upgradeLevel}</p>
+          </div>
+          <div id="CoinPerTapInfo">
+            <p>Стоимость улучшения: {upgradeCost}</p>
+          </div>
+          <button onClick={onUpgrade} disabled={coins < upgradeCost}>
+            Улучшить
+          </button>
+        </div>
+        
       </div>
       <button onClick={onClose}>Закрыть</button>
     </div>
