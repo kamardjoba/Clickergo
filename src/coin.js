@@ -35,6 +35,21 @@ const Coin = ({ onClick, coinPerClick, clicks }) => {
     onClick();
   };
 
+  const handleTouchStart = (event) => {
+    Array.from(event.touches).forEach((touch) => {
+      const rect = event.target.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+
+      setClicksArray((prevClicks) => [
+        ...prevClicks,
+        { id: Date.now(), x, y, value: coinPerClick },
+      ]);
+
+      onClick();
+    });
+  };
+
   return (
       <div className="coin-container">
         <motion.div
@@ -42,6 +57,7 @@ const Coin = ({ onClick, coinPerClick, clicks }) => {
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onClick={handleCoinClick}
+            onTouchStart={handleTouchStart} // Добавлен обработчик для мультитач
         >
           <img src={coinImage} alt="Coin" />
           <AnimatePresence>
