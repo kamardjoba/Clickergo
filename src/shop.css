@@ -1,12 +1,17 @@
 .shop {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: linear-gradient(135deg, #1e1e1e, #333);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     max-width: 400px;
-    margin: 20px auto;
+    width: 90%;
     color: white;
     text-align: center;
+    z-index: 1000;
 }
 
 .shop h2 {
@@ -64,36 +69,3 @@ button:disabled {
 .close-button:hover {
     background: linear-gradient(135deg, #ff0000, #cc0000);
 }
-
-
-#clouseButtom{
-	background: red;
-	color: black;
-  }
-
-  #CoinPerTap{
-    background: #282C34;
-    width: 100%;
-    text-align: center;
-    border-radius: 10px;
-    color:white;
-  }
-
-  #BuyCoinPerTapMenu{
-    background: #5b5e64;
-    text-align: center;
-    border-radius: 10px;
-  }
-
-  #CoinPerTapInfo{
-    width: 50%;
-    background: #525356;
-    float: left;
-    text-align: center;
-    margin: 0;
-  }
-
-  #MainInfo{
-	  font-size: 48px;
-	  margin: 0;
-  }
