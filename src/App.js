@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
@@ -16,9 +16,17 @@ function App() {
   const [upgradeCost, setUpgradeCost] = useState(10);
   const [upgradeLevel, setUpgradeLevel] = useState(1);
 
-  const [clickLimit, setLimitEnergy] = useState(1000);
+  const [clickLimit, setClickLimit] = useState(1000);
   const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
   const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setClickLimit(prevClickLimit => prevClickLimit + coinPerClick);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [coinPerClick]);
 
   const checkSubscription = async () => {
     try {
@@ -65,7 +73,7 @@ function App() {
   const handleUpgradeEnergy = () => {
     if (coins >= upgradeCostEnergy) {
       setCoins(coins - upgradeCostEnergy);
-      setLimitEnergy(clickLimit * 2);
+      setClickLimit(clickLimit * 2);
       setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
       setupgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
