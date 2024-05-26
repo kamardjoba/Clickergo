@@ -69,3 +69,11 @@ button:disabled {
 .close-button:hover {
     background: linear-gradient(135deg, #ff0000, #cc0000);
 }
+
+.click-button {
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+}
+
+.click-button:hover {
+    background: linear-gradient(135deg, #00cc00, #009900);
+}

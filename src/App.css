@@ -90,7 +90,7 @@ button, .boost, .earn, .referal {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Выровняем элементы по левому краю */
+  align-items: center; /* Выровняем элементы по левому краю */
 }
 
 .progress-bar {
