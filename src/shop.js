@@ -1,7 +1,7 @@
 import React from 'react';
 import './shop.css';
 
-const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade }) => {
+const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, clickLimit }) => {
   return (
     <div className="shop">
       <h2>Магазин</h2>
@@ -24,14 +24,14 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
       <div id="CoinPerTap">
         <p>Енергия</p>
         <div id="BuyCoinPerTapMenu">
-          <p id="MainInfo">{coinPerClick}</p>
+          <p id="MainInfo">{clickLimit}</p>
           <div id="CoinPerTapInfo">
-            <p>Уровень улучшения: {upgradeLevel}</p>
+            <p>Уровень улучшения: {upgradeLevelEnergy}</p>
           </div>
           <div id="CoinPerTapInfo">
-            <p>Стоимость улучшения: {upgradeCost}</p>
+            <p>Стоимость улучшения: {upgradeCostEnergy}</p>
           </div>
-          <button onClick={onUpgrade} disabled={coins < upgradeCost}>
+          <button onClick={onUpgradeEnergy} disabled={coins < upgradeCostEnergy}>
             Улучшить
           </button>
         </div>

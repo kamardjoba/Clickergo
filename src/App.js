@@ -11,7 +11,10 @@ function App() {
   const [upgradeCost, setUpgradeCost] = useState(10);
   const [upgradeLevel, setUpgradeLevel] = useState(1);
   const [clicks, setClicks] = useState(0);
-  const clickLimit = 1000;
+
+  const [clickLimit, setLimitEnergy] = useState(1000);
+  const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
+  const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
 
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
@@ -35,6 +38,15 @@ function App() {
       setUpgradeLevel(upgradeLevel + 1);
       setUpgradeCost(Math.floor(upgradeCost * 1.5));
     }
+
+  const handleUpgradeEnergy = () =>{
+    if (coins >= upgradeCostEnergy){
+      setCoins(coins - upgradeCostEnergy);
+      setLimitEnergy(clickLimit * 2);
+      setUpgradeLevel(upgradeLevelEnergy + 1);
+      setupgradeCostEnerg(Math.floor(upgradeCostEnergy * 1.5));
+    }
+  }
   };
 
   return (
@@ -56,6 +68,7 @@ function App() {
                 upgradeLevel={upgradeLevel}
                 onClose={handleCloseShop}
                 onUpgrade={handleUpgrade}
+                onUpgradeEnergy={handleUpgradeEnergy}
             />
         )}
       </div>
