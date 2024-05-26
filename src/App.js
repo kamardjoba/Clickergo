@@ -97,10 +97,10 @@ function App() {
           <h1>Кликер Игра</h1>
           <p>Монеты: {coins}</p>
           <p>Монет за клик: {coinPerClick}</p>
-          <Coin onClick={handleCoinClick}/>
+          <Coin onClick={handleCoinClick} />
           <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
           <div className="earn">Earn 💰</div>
-          <ProgressBar current={clicks} max={clickLimit}/>
+          <ProgressBar current={clicks} max={clickLimit} />
           <p>{clicks} / {clickLimit}</p>
         </header>
         {isShopOpen && (
@@ -122,4 +122,5 @@ function App() {
       </div>
   );
 }
+
 export default App;
