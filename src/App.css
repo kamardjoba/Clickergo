@@ -9,11 +9,23 @@
 .App-header {
   background: linear-gradient(135deg, #ff9a00 0%, #ff9a00 50%, #000 50%, #000 100%);
   padding: 20px;
-  flex-grow: 1;
+  flex-grow: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.coin-container img {
+  width: 150px; /* Увеличили размер монеты */
+  height: 150px;
 }
 
 .controls {

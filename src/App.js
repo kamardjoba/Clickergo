@@ -97,15 +97,17 @@ function App() {
           <h1>Кликер Игра</h1>
           <p>Монеты: {coins}</p>
           <p>Монет за клик: {coinPerClick}</p>
-          <Coin onClick={handleCoinClick} />
         </header>
-        <div className="controls">
-          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
-          <div className="earn">Earn 💰</div>
+        <div className="coin-container">
+          <Coin onClick={handleCoinClick} />
         </div>
         <div className="progress-bar-container">
           <ProgressBar current={clicks} max={clickLimit} />
           <p>{clicks} / {clickLimit}</p>
+        </div>
+        <div className="controls">
+          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
+          <div className="earn">Earn 💰</div>
         </div>
         {isShopOpen && (
             <Shop
