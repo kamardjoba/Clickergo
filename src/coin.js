@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import coinImage from '../assets/coin.png';
+import coinImage from './coin.png';
 import './coin.css';
 
 const Coin = ({ onClick }) => {
