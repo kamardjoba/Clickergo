@@ -22,11 +22,11 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setClickLimit(prevClickLimit => prevClickLimit + coinPerClick);
+      setClicks(prevClicks => Math.min(prevClicks + coinPerClick, clickLimit));
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [coinPerClick]);
+  }, [coinPerClick, clickLimit]);
 
   const checkSubscription = async () => {
     try {
