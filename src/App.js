@@ -7,7 +7,7 @@ import './App.css';
 function App() {
   const [coins, setCoins] = useState(0);
   const [isShopOpen, setIsShopOpen] = useState(false);
-  const [clicks, setClicks] = useState(0);
+  const [clicks, setClicks] = useState(1000);  // Изначально 1000 кликов
 
   const [coinPerClick, setCoinPerClick] = useState(1);
   const [upgradeCost, setUpgradeCost] = useState(10);
@@ -50,10 +50,18 @@ function App() {
     localStorage.setItem('upgradeLevelEnergy', upgradeLevelEnergy);
   }, [coins, coinPerClick, upgradeCost, upgradeLevel, clicks, clickLimit, upgradeCostEnergy, upgradeLevelEnergy]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setClicks(prevClicks => Math.min(prevClicks + coinPerClick, clickLimit));
+    }, 3000);
+
+    return () => clearInterval(interval); // Очистка интервала при размонтировании компонента
+  }, [coinPerClick, clickLimit]);
+
   const handleCoinClick = () => {
-    if (clicks < clickLimit) {
+    if (clicks > 0) {
       setCoins(coins + coinPerClick);
-      setClicks(clicks + coinPerClick);  // Увеличиваем количество кликов в зависимости от coinPerClick
+      setClicks(clicks - coinPerClick);  // Уменьшаем количество кликов в зависимости от coinPerClick
     }
   };
 
