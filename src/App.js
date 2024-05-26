@@ -20,13 +20,6 @@ function App() {
   const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
   const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
 
-  useEffect(() => {
-    // Получите userId из Telegram при загрузке приложения
-    // Например, используя Telegram Web App SDK
-    window.Telegram.WebApp.ready();
-    setUserId(window.Telegram.WebApp.initDataUnsafe.user.id);
-  }, []);
-
   const checkSubscription = async () => {
     try {
       const response = await fetch('/check-subscription', {
@@ -94,7 +87,7 @@ function App() {
       alert('Thank you for subscribing! You have earned 5000 coins.');
       setIsModalOpen(false);
     } else {
-      alert('Please subscribe to our channel first: https://t.me/your_channel_nickname');
+      alert('Please subscribe to our channel first: https://t.me/GOGOGOGOGOGOGOGgogogooo');
     }
   };
 
