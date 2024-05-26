@@ -234,11 +234,11 @@ function App() {
         <div className="progress-bar-container">
           <p>{clicks} / {clickLimit}</p>
           <ProgressBar current={clicks} max={clickLimit} />
-        </div>
-        <div className="controls">
-          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
-          <div className="earn" onClick={handleEarn}>Earn 💰</div>
-          <div className="referal" onClick={handleReferal}>Referal 👻</div>
+          <div className="controls">
+            <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
+            <div className="earn" onClick={handleEarn}>Earn 💰</div>
+            <div className="referal" onClick={handleReferal}>Referal 👻</div>
+          </div>
         </div>
         {isShopOpen && (
             <Shop

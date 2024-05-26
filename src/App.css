@@ -25,7 +25,6 @@
 .controls {
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
   margin-bottom: 20px;
   position: absolute;
   bottom: 60px;
@@ -108,6 +107,6 @@ button, .boost, .earn, .referal {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: calc(100vh - 200px);
+  height: calc(100vh - 400px); /* Подняли монету выше */
   padding-top: 20px;
 }
