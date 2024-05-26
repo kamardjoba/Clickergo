@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar';
 import Modal from './modal';
 import ReferalModal from './ReferalModal';
 import './App.css';
-import coinImage from './path_to_your_coin_image.png'; // Обновите путь к вашей иконке монеты
+import coinImage from './CoinUp.png'; // Обновите путь к вашей иконке монеты
 
 function App() {
   const [coins, setCoins] = useState(() => {
