@@ -3,6 +3,7 @@ import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
 import Modal from './modal';
+import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
 import './App.css';
 
 function App() {
@@ -12,11 +13,20 @@ function App() {
   });
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isReferalOpen, setIsReferalOpen] = useState(false); // Состояние для окна реферального кода
   const [clicks, setClicks] = useState(() => {
     const savedClicks = localStorage.getItem('clicks');
     return savedClicks ? parseInt(savedClicks, 10) : 1000;
   });
-  const [userId, setUserId] = useState(null);
+  const [userId, setUserId] = useState(() => {
+    const savedUserId = localStorage.getItem('userId');
+    if (savedUserId) {
+      return savedUserId;
+    }
+    const newUserId = `user-${Date.now()}`;
+    localStorage.setItem('userId', newUserId);
+    return newUserId;
+  });
 
   const [coinPerClick, setCoinPerClick] = useState(() => {
     const savedCoinPerClick = localStorage.getItem('coinPerClick');
@@ -155,11 +165,15 @@ function App() {
   };
 
   const handleReferal = () => {
-    alert('Refer a friend and earn rewards!');
+    setIsReferalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCloseReferalModal = () => {
+    setIsReferalOpen(false);
   };
 
   const handleCheckSubscription = async () => {
@@ -172,6 +186,35 @@ function App() {
     } else {
       alert('Пожалуйста, сначала подпишитесь на наш канал: https://t.me/GOGOGOGOGOGOGOGgogogooo');
     }
+  };
+
+  const handleReferralClick = (referralCode) => {
+    if (referralCode === userId) {
+      alert('Вы не можете использовать свой собственный реферальный код.');
+      return;
+    }
+
+    // Обработка реферального кода
+    fetch('/referral', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId, referralCode })
+    })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            setCoins(coins + 3000);
+            alert('Вы и ваш друг получили по 3000 монет!');
+          } else {
+            alert('Ошибка при обработке реферального кода.');
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+          alert('Ошибка при обработке реферального кода.');
+        });
   };
 
   return (
@@ -211,6 +254,12 @@ function App() {
             <Modal
                 onClose={handleCloseModal}
                 onCheckSubscription={handleCheckSubscription}
+            />
+        )}
+        {isReferalOpen && (
+            <ReferalModal
+                userId={userId}
+                onClose={handleCloseReferalModal}
             />
         )}
       </div>
