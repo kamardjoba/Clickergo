@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import coinImage from '../assets/coin.png';
-import './Coin.css';
+import './coin.css';
 
 const Coin = ({ onClick }) => {
   return (
@@ -13,7 +13,7 @@ const Coin = ({ onClick }) => {
     >
       <img src={coinImage} alt="Coin" />
     </motion.div>
-    
+
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Shop.css';
+import './shop.css';
 
 const Shop = ({ coins, coinPerClick, onClose, onUpgrade }) => {
   const [upgradeCost, setUpgradeCost] = useState(10);
