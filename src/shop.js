@@ -8,6 +8,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
       <p>Уровень улучшения: {upgradeLevel}</p>
       <p>Монет за клик: {coinPerClick}</p>
       <p>Монет за клик: {coinPerClick}</p>
+      <p>Монет за клик: {coinPerClick}</p>
       <p>Стоимость улучшения: {upgradeCost}</p>
       <button onClick={onUpgrade} disabled={coins < upgradeCost}>
         Улучшить
