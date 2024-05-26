@@ -1,4 +1,3 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import Coin from './coin';
 import Shop from './shop';
@@ -14,6 +13,12 @@ function App() {
     metaViewport.name = "viewport";
     metaViewport.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
     document.head.appendChild(metaViewport);
+
+    if (window.Telegram.WebApp) {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    }
+
     return () => {
       document.head.removeChild(metaViewport);
     };
@@ -231,6 +236,18 @@ function App() {
           alert('Ошибка при обработке реферального кода.');
         });
   };
+
+  useEffect(() => {
+    const coinElement = document.querySelector('.coin-container');
+    const handleTouchStart = (event) => {
+      handleCoinClick();
+      event.preventDefault();
+    };
+    coinElement.addEventListener('touchstart', handleTouchStart);
+    return () => {
+      coinElement.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, [clicks, coinPerClick]);
 
   return (
       <div className="App">
