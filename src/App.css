@@ -15,7 +15,7 @@
 
 .App-header {
   padding: 20px;
-  flex-grow: 0; /* Уменьшили flex-grow чтобы заголовок не растягивался */
+  flex-grow: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -63,9 +63,8 @@ button, .boost, .earn, .referal {
   width: 100%;
   padding: 0 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: flex-start; /* Выровняем элементы по левому краю */
 }
 
 .progress-bar {
@@ -99,9 +98,9 @@ button, .boost, .earn, .referal {
 
 .progress-bar-container p {
   margin: 0;
-  text-align: right;
+  text-align: left; /* Выровняем текст по левому краю */
   color: white;
-  width: 95%; /* Убедимся, что текст тоже имеет отступ */
+  width: 100%; /* Убедимся, что текст занимает всю ширину контейнера */
 }
 
 .coin-container {
@@ -109,6 +108,6 @@ button, .boost, .earn, .referal {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: calc(100vh - 200px); /* Уменьшили высоту, чтобы поднять монету выше */
-  padding-top: 20px; /* Добавили отступ сверху */
+  height: calc(100vh - 200px);
+  padding-top: 20px;
 }
