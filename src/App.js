@@ -45,6 +45,17 @@ function App() {
   });
 
   useEffect(() => {
+    const savedTimestamp = localStorage.getItem('lastUpdate');
+    if (savedTimestamp) {
+      const lastUpdate = parseInt(savedTimestamp, 10);
+      const currentTime = Date.now();
+      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000); // Время, прошедшее в интервалах по 3 секунды
+      const additionalClicks = timeDiff * coinPerClick;
+      setClicks(prevClicks => Math.min(prevClicks + additionalClicks, clickLimit));
+    }
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem('coins', coins);
   }, [coins]);
 
@@ -78,7 +89,11 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setClicks(prevClicks => Math.min(prevClicks + coinPerClick, clickLimit));
+      setClicks(prevClicks => {
+        const newClicks = Math.min(prevClicks + coinPerClick, clickLimit);
+        localStorage.setItem('lastUpdate', Date.now());
+        return newClicks;
+      });
     }, 3000);
 
     return () => clearInterval(interval);
