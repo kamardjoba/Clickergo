@@ -25,16 +25,16 @@
 .controls {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: absolute;
   bottom: 60px;
   right: 20px;
 }
 
 button, .boost, .earn, .referal {
-  margin: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
+  margin: 0 3px; /* Уменьшили расстояние между кнопками */
+  padding: 8px 12px; /* Уменьшили размер кнопок */
+  font-size: 14px; /* Уменьшили размер текста */
   cursor: pointer;
   border: none;
   border-radius: 10px;
