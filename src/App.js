@@ -6,11 +6,12 @@ import './App.css';
 
 function App() {
   const [coins, setCoins] = useState(0);
-  const [coinPerClick, setCoinPerClick] = useState(1);
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [clicks, setClicks] = useState(0);
+
+  const [coinPerClick, setCoinPerClick] = useState(1);
   const [upgradeCost, setUpgradeCost] = useState(10);
   const [upgradeLevel, setUpgradeLevel] = useState(1);
-  const [clicks, setClicks] = useState(0);
 
   const [clickLimit, setLimitEnergy] = useState(1000);
   const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
@@ -67,7 +68,7 @@ function App() {
                 coinPerClick={coinPerClick}
                 upgradeCost={upgradeCost}
                 upgradeLevel={upgradeLevel}
-                
+
                 clickLimit = {clickLimit}
                 upgradeCostEnergy = {upgradeCostEnergy}
                 upgradeLevelEnergy = {upgradeLevelEnergy}
