@@ -1,9 +1,10 @@
+// App.js
 import React, { useState, useEffect } from 'react';
 import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
 import Modal from './modal';
-import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
+import ReferalModal from './ReferalModal';
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   });
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isReferalOpen, setIsReferalOpen] = useState(false); // Состояние для окна реферального кода
+  const [isReferalOpen, setIsReferalOpen] = useState(false);
   const [clicks, setClicks] = useState(() => {
     const savedClicks = localStorage.getItem('clicks');
     return savedClicks ? parseInt(savedClicks, 10) : 1000;
@@ -61,7 +62,7 @@ function App() {
     if (savedTimestamp) {
       const lastUpdate = parseInt(savedTimestamp, 10);
       const currentTime = Date.now();
-      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000); // Время, прошедшее в интервалах по 3 секунды
+      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000);
       const additionalClicks = timeDiff * coinPerClick;
       setClicks(prevClicks => Math.min(prevClicks + additionalClicks, clickLimit));
     }
@@ -198,7 +199,6 @@ function App() {
       return;
     }
 
-    // Обработка реферального кода
     fetch('/referral', {
       method: 'POST',
       headers: {
@@ -232,8 +232,8 @@ function App() {
           <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} clicks={clicks} />
         </div>
         <div className="progress-bar-container">
-          <ProgressBar current={clicks} max={clickLimit} />
           <p>{clicks} / {clickLimit}</p>
+          <ProgressBar current={clicks} max={clickLimit} />
         </div>
         <div className="controls">
           <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>

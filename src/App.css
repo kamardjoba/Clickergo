@@ -7,15 +7,15 @@
   flex-direction: column;
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
-  width: 100vw; /* Добавьте это */
-  height: 100vh; /* Добавьте это */
-  overflow: hidden; /* Убедитесь, что нет прокрутки */
-  margin: 0; /* Убедитесь, что нет внешних отступов */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }
 
 .App-header {
   padding: 20px;
-  flex-grow: 1;
+  flex-grow: 0; /* Уменьшили flex-grow чтобы заголовок не растягивался */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -56,7 +56,6 @@ button, .boost, .earn, .referal {
   justify-content: center;
 }
 
-/* App.css */
 .progress-bar-container {
   position: absolute;
   bottom: 20px;
@@ -64,17 +63,19 @@ button, .boost, .earn, .referal {
   width: 100%;
   padding: 0 20px;
   display: flex;
-  justify-content: center; /* Центрируем прогресс-бар */
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
-
 .progress-bar {
-  width: 100%;
+  width: 95%;
   height: 30px;
   background-color: transparent;
   border-radius: 15px;
   overflow: hidden;
+  margin-top: 10px;
+  margin-right: 5%;
   position: relative;
 }
 
@@ -97,9 +98,10 @@ button, .boost, .earn, .referal {
 }
 
 .progress-bar-container p {
-  margin: 5px 0 0 0;
-  text-align: center;
+  margin: 0;
+  text-align: right;
   color: white;
+  width: 95%; /* Убедимся, что текст тоже имеет отступ */
 }
 
 .coin-container {
@@ -107,7 +109,6 @@ button, .boost, .earn, .referal {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: calc(100vh - 140px);
+  height: calc(100vh - 200px); /* Уменьшили высоту, чтобы поднять монету выше */
+  padding-top: 20px; /* Добавили отступ сверху */
 }
-
-  
