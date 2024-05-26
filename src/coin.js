@@ -6,26 +6,28 @@ import './coin.css';
 const Coin = ({ onClick, coinPerClick, clicks }) => {
   const [clicksArray, setClicksArray] = useState([]);
 
-  const handleMouseDown = (event) => {
+  const handleInteractionStart = (event) => {
+    const touchEvent = event.type === 'touchstart' ? event.touches[0] : event;
     const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = touchEvent.clientX - rect.left;
+    const y = touchEvent.clientY - rect.top;
     const rotateX = ((y / rect.height) - 0.5) * -20;
     const rotateY = ((x / rect.width) - 0.5) * 20;
 
     event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
 
-  const handleMouseUp = (event) => {
+  const handleInteractionEnd = (event) => {
     event.target.style.transform = 'rotateX(0deg) rotateY(0deg)';
   };
 
   const handleCoinClick = (event) => {
+    const touchEvent = event.type === 'touchstart' ? event.touches[0] : event;
     if (clicks < coinPerClick) return;
 
     const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = touchEvent.clientX - rect.left;
+    const y = touchEvent.clientY - rect.top;
 
     setClicksArray((prevClicks) => [
       ...prevClicks,
@@ -35,29 +37,15 @@ const Coin = ({ onClick, coinPerClick, clicks }) => {
     onClick();
   };
 
-  const handleTouchStart = (event) => {
-    Array.from(event.touches).forEach((touch) => {
-      const rect = event.target.getBoundingClientRect();
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-
-      setClicksArray((prevClicks) => [
-        ...prevClicks,
-        { id: Date.now(), x, y, value: coinPerClick },
-      ]);
-
-      onClick();
-    });
-  };
-
   return (
       <div className="coin-container">
         <motion.div
             className="coin"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
+            onMouseDown={handleInteractionStart}
+            onMouseUp={handleInteractionEnd}
+            onTouchStart={(event) => { handleInteractionStart(event); handleCoinClick(event); }}
+            onTouchEnd={handleInteractionEnd}
             onClick={handleCoinClick}
-            onTouchStart={handleTouchStart} // Добавлен обработчик для мультитач
         >
           <img src={coinImage} alt="Coin" />
           <AnimatePresence>
