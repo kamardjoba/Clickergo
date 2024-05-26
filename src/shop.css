@@ -11,8 +11,48 @@
     z-index: 1000;
   }
   
-  
   .shop button {
     margin-top: 10px;
+	  background: linear-gradient(to right, #24FE41, #FDFC47);
+    color: #555;
+    cursor: pointer;
+	  font-size: 20px;
+	  font-weight: bold;
+	  width: 90%;
+	  padding: 10px;
+	  margin:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
+  #clouseButtom{
+	background: red;
+	color: black;
+  }
+
+  #CoinPerTap{
+    background: #282C34;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    color:white;
+  }
+
+  #BuyCoinPerTapMenu{
+    background: #5b5e64;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  #CoinPerTapInfo{
+    width: 50%;
+    background: #525356;
+    float: left;
+    text-align: center;
+    margin: 0;
+  }
+
+  #MainInfo{
+	  font-size: 48px;
+	  margin: 0;
+  }

@@ -1,41 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import Coin from './components/Coin';
-import Shop from './components/Shop';
-import ProgressBar from './components/ProgressBar';
+import React, { useState } from 'react';
+import Coin from './coin';
+import Shop from './shop';
+import ProgressBar from './ProgressBar';
 import './App.css';
 
 function App() {
   const [coins, setCoins] = useState(0);
-  const [coinPerClick, setCoinPerClick] = useState(1);
   const [isShopOpen, setIsShopOpen] = useState(false);
+  const [clicks, setClicks] = useState(0);
+
+  const [coinPerClick, setCoinPerClick] = useState(1);
   const [upgradeCost, setUpgradeCost] = useState(10);
   const [upgradeLevel, setUpgradeLevel] = useState(1);
-  const [clicks, setClicks] = useState(0);
-  const clickLimit = 1000;
 
-  // Загрузка сохраненного состояния при загрузке компонента
-  useEffect(() => {
-    const savedCoins = localStorage.getItem('coins');
-    const savedCoinPerClick = localStorage.getItem('coinPerClick');
-    const savedUpgradeCost = localStorage.getItem('upgradeCost');
-    const savedUpgradeLevel = localStorage.getItem('upgradeLevel');
-    const savedClicks = localStorage.getItem('clicks');
-
-    if (savedCoins !== null) setCoins(Number(savedCoins));
-    if (savedCoinPerClick !== null) setCoinPerClick(Number(savedCoinPerClick));
-    if (savedUpgradeCost !== null) setUpgradeCost(Number(savedUpgradeCost));
-    if (savedUpgradeLevel !== null) setUpgradeLevel(Number(savedUpgradeLevel));
-    if (savedClicks !== null) setClicks(Number(savedClicks));
-  }, []);
-
-  // Сохранение состояния при каждом изменении
-  useEffect(() => {
-    localStorage.setItem('coins', coins);
-    localStorage.setItem('coinPerClick', coinPerClick);
-    localStorage.setItem('upgradeCost', upgradeCost);
-    localStorage.setItem('upgradeLevel', upgradeLevel);
-    localStorage.setItem('clicks', clicks);
-  }, [coins, coinPerClick, upgradeCost, upgradeLevel, clicks]);
+  const [clickLimit, setLimitEnergy] = useState(1000);
+  const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
+  const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
 
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
@@ -61,6 +41,16 @@ function App() {
     }
   };
 
+  const handleUpgradeEnergy = () => {
+    if (coins >= upgradeCostEnergy) {
+      setCoins(coins - upgradeCostEnergy);
+      setLimitEnergy(clickLimit * 2);
+      setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
+      setupgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
+    }
+  };
+
+  
   return (
       <div className="App">
         <header className="App-header">
@@ -78,8 +68,14 @@ function App() {
                 coinPerClick={coinPerClick}
                 upgradeCost={upgradeCost}
                 upgradeLevel={upgradeLevel}
+
+                clickLimit = {clickLimit}
+                upgradeCostEnergy = {upgradeCostEnergy}
+                upgradeLevelEnergy = {upgradeLevelEnergy}
+                
                 onClose={handleCloseShop}
                 onUpgrade={handleUpgrade}
+                onUpgradeEnergy={handleUpgradeEnergy}
             />
         )}
       </div>
