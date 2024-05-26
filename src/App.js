@@ -8,6 +8,8 @@ function App() {
   const [coins, setCoins] = useState(0);
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [clicks, setClicks] = useState(1000);  // Изначально 1000 кликов
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [userId, setUserId] = useState(null); // Здесь нужно получить user ID от Telegram
 
   const [coinPerClick, setCoinPerClick] = useState(1);
   const [upgradeCost, setUpgradeCost] = useState(10);
@@ -17,46 +19,29 @@ function App() {
   const [upgradeCostEnergy, setupgradeCostEnergy] = useState(500);
   const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1);
 
-  // Загрузка сохраненного состояния при загрузке компонента
   useEffect(() => {
-    const savedCoins = localStorage.getItem('coins');
-    const savedCoinPerClick = localStorage.getItem('coinPerClick');
-    const savedUpgradeCost = localStorage.getItem('upgradeCost');
-    const savedUpgradeLevel = localStorage.getItem('upgradeLevel');
-    const savedClicks = localStorage.getItem('clicks');
-    const savedClickLimit = localStorage.getItem('clickLimit');
-    const savedUpgradeCostEnergy = localStorage.getItem('upgradeCostEnergy');
-    const savedUpgradeLevelEnergy = localStorage.getItem('upgradeLevelEnergy');
+    // Проверка подписки при загрузке
+    if (userId) {
+      checkSubscription();
+    }
+  }, [userId]);
 
-    if (savedCoins !== null) setCoins(Number(savedCoins));
-    if (savedCoinPerClick !== null) setCoinPerClick(Number(savedCoinPerClick));
-    if (savedUpgradeCost !== null) setUpgradeCost(Number(savedUpgradeCost));
-    if (savedUpgradeLevel !== null) setUpgradeLevel(Number(savedUpgradeLevel));
-    if (savedClicks !== null) setClicks(Number(savedClicks));
-    if (savedClickLimit !== null) setLimitEnergy(Number(savedClickLimit));
-    if (savedUpgradeCostEnergy !== null) setupgradeCostEnergy(Number(savedUpgradeCostEnergy));
-    if (savedUpgradeLevelEnergy !== null) setUpgradeLevelEnergy(Number(savedUpgradeLevelEnergy));
-  }, []);
+  const checkSubscription = async () => {
+    try {
+      const response = await fetch('/check-subscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ userId })
+      });
 
-  // Сохранение состояния при каждом изменении
-  useEffect(() => {
-    localStorage.setItem('coins', coins);
-    localStorage.setItem('coinPerClick', coinPerClick);
-    localStorage.setItem('upgradeCost', upgradeCost);
-    localStorage.setItem('upgradeLevel', upgradeLevel);
-    localStorage.setItem('clicks', clicks);
-    localStorage.setItem('clickLimit', clickLimit);
-    localStorage.setItem('upgradeCostEnergy', upgradeCostEnergy);
-    localStorage.setItem('upgradeLevelEnergy', upgradeLevelEnergy);
-  }, [coins, coinPerClick, upgradeCost, upgradeLevel, clicks, clickLimit, upgradeCostEnergy, upgradeLevelEnergy]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setClicks(prevClicks => Math.min(prevClicks + coinPerClick, clickLimit));
-    }, 3000);
-
-    return () => clearInterval(interval); // Очистка интервала при размонтировании компонента
-  }, [coinPerClick, clickLimit]);
+      const data = await response.json();
+      setIsSubscribed(data.isMember);
+    } catch (error) {
+      console.error('Error checking subscription:', error.message);
+    }
+  };
 
   const handleCoinClick = () => {
     if (clicks > 0) {
@@ -91,6 +76,30 @@ function App() {
     }
   };
 
+  const handleEarn = async () => {
+    const isSubscribed = await checkSubscription();
+
+    if (isSubscribed) {
+      setCoins(coins + 5000);
+      alert('Thank you for subscribing! You have earned 5000 coins.');
+    } else {
+      alert('Please subscribe to our channel first: https://t.me/your_channel_id');
+    }
+  };
+
+  if (!isSubscribed) {
+    return (
+        <div className="App">
+          <header className="App-header">
+            <h1>Подпишитесь на наш канал</h1>
+            <p>Для продолжения игры, пожалуйста, подпишитесь на наш Telegram канал.</p>
+            <a href="https://t.me/your_channel_id" target="_blank" rel="noopener noreferrer">Перейти к каналу</a>
+            <button onClick={checkSubscription}>Я подписался</button>
+          </header>
+        </div>
+    );
+  }
+
   return (
       <div className="App">
         <header className="App-header">
@@ -107,7 +116,7 @@ function App() {
         </div>
         <div className="controls">
           <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
-          <div className="earn">Earn 💰</div>
+          <div className="earn" onClick={handleEarn}>Earn 💰</div>
         </div>
         {isShopOpen && (
             <Shop
