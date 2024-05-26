@@ -98,7 +98,8 @@ function App() {
           <p>Монеты: {coins}</p>
           <p>Монет за клик: {coinPerClick}</p>
           <Coin onClick={handleCoinClick} />
-          <button onClick={handleOpenShop}>Магазин</button>
+          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
+          <div className="earn">Earn 💰</div>
           <ProgressBar current={clicks} max={clickLimit} />
           <p>{clicks} / {clickLimit}</p>
         </header>
