@@ -87,7 +87,7 @@ function App() {
       alert('Thank you for subscribing! You have earned 5000 coins.');
       setIsModalOpen(false);
     } else {
-      alert('Please subscribe to our channel first: https://t.me/GOGOGOGOGOGOGOGgogogooo');
+      alert('Please subscribe to our channel first: https://t.me/your_channel_nickname');
     }
   };
 
