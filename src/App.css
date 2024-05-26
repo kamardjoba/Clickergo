@@ -4,10 +4,11 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #000000, #ff9a00);
+  background-size: cover;
 }
 
 .App-header {
-  background: linear-gradient(135deg, #ff9a00 0%, #ff9a00 50%, #000 50%, #000 100%);
   padding: 20px;
   flex-grow: 1;
   display: flex;
