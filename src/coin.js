@@ -1,19 +1,11 @@
 import React from 'react';
-import  {motion}  from 'framer-motion';
-import coinImage from './coin.png';
-import './coin.css';
+import coinImage from './coin.png'; // Замените на путь к вашему изображению
 
 const Coin = ({ onClick }) => {
   return (
-    <motion.div
-      className="coin"
-      onClick={onClick}
-      whileTap={{ rotate: [0, 360] }}
-      transition={{ duration: 0.5 }}
-    >
-      <img src={coinImage} alt="Coin" />
-    </motion.div>
-
+      <div>
+        <img src={coinImage} alt="Coin" onClick={onClick} style={{ cursor: 'pointer', width: '150px', height: '150px' }} />
+      </div>
   );
 };
 
