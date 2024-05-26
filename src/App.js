@@ -8,13 +8,15 @@ function App() {
   const [coinPerClick, setCoinPerClick] = useState(1);
   const [isShopOpen, setIsShopOpen] = useState(false);
 
+  const handleOpenShop = () => {
+    setIsShopOpen(true);
+  };
+
   const handleCoinClick = () => {
     setCoins(coins + coinPerClick);
   };
 
-  const handleOpenShop = () => {
-    setIsShopOpen(true);
-  };
+  
 
   const handleCloseShop = () => {
     setIsShopOpen(false);
