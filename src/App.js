@@ -50,22 +50,6 @@ function App() {
     }
   };
   
-  useEffect(() => {
-    if (clicks > 0) {
-      const interval = setInterval(() => {
-        setClicks((prevClicks) => {
-          if (prevClicks > 0) {
-            return prevClicks - 1;
-          } else {
-            clearInterval(interval);
-            return 0;
-          }
-        });
-      }, 1000);
-      return () => clearInterval(interval);
-    }
-  }, [clicks]);
-  
   return (
       <div className="App">
         <header className="App-header">
