@@ -90,5 +90,12 @@ button, .boost, .earn {
   text-align: center;
   color: white;
 }
+/* Добавьте это в конец файла App.css */
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1; /* Это заставляет контейнер занимать доступное пространство */
+}
 
   

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// Обновленный App.js
+import React, { useState } from 'react';
 import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
@@ -8,9 +9,9 @@ import './App.css';
 function App() {
   const [coins, setCoins] = useState(0);
   const [isShopOpen, setIsShopOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);  // Добавляем состояние для модального окна
-  const [clicks, setClicks] = useState(1000);  // Изначально 1000 кликов
-  const [userId, setUserId] = useState(null); // Здесь нужно получить user ID от Telegram
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clicks, setClicks] = useState(1000);
+  const [userId, setUserId] = useState(null);
 
   const [coinPerClick, setCoinPerClick] = useState(1);
   const [upgradeCost, setUpgradeCost] = useState(10);
@@ -41,7 +42,7 @@ function App() {
   const handleCoinClick = () => {
     if (clicks > 0) {
       setCoins(coins + coinPerClick);
-      setClicks(clicks - coinPerClick);  // Уменьшаем количество кликов в зависимости от coinPerClick
+      setClicks(clicks - coinPerClick);
     }
   };
 
@@ -72,7 +73,7 @@ function App() {
   };
 
   const handleEarn = () => {
-    setIsModalOpen(true);  // Открываем модальное окно при нажатии на Earn
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
@@ -84,10 +85,10 @@ function App() {
 
     if (isSubscribed) {
       setCoins(coins + 5000);
-      alert('Thank you for subscribing! You have earned 5000 coins.');
+      alert('Спасибо за подписку! Вы получили 5000 монет.');
       setIsModalOpen(false);
     } else {
-      alert('Please subscribe to our channel first: https://t.me/GOGOGOGOGOGOGOGgogogooo');
+      alert('Пожалуйста, сначала подпишитесь на наш канал: https://t.me/GOGOGOGOGOGOGOGgogogooo');
     }
   };
 
@@ -115,11 +116,9 @@ function App() {
                 coinPerClick={coinPerClick}
                 upgradeCost={upgradeCost}
                 upgradeLevel={upgradeLevel}
-
                 clickLimit={clickLimit}
                 upgradeCostEnergy={upgradeCostEnergy}
                 upgradeLevelEnergy={upgradeLevelEnergy}
-
                 onClose={handleCloseShop}
                 onUpgrade={handleUpgrade}
                 onUpgradeEnergy={handleUpgradeEnergy}
