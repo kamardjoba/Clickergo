@@ -1,20 +1,25 @@
 .App {
   text-align: center;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-header {
   background: linear-gradient(135deg, #ff9a00 0%, #ff9a00 50%, #000 50%, #000 100%);
-  min-height: 100vh;
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  margin: 20px;
 }
 
 button, .boost, .earn {
-  margin-top: 20px;
+  margin: 5px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -43,13 +48,20 @@ button, .boost, .earn {
   justify-content: center;
 }
 
+.progress-bar-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
 .progress-bar {
   width: 100%;
   height: 30px;
   background-color: transparent;
   border-radius: 15px;
   overflow: hidden;
-  margin-top: 20px;
   position: relative;
 }
 
