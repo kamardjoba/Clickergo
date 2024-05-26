@@ -1,4 +1,3 @@
-// Обновленный App.js
 import React, { useState } from 'react';
 import Coin from './coin';
 import Shop from './shop';

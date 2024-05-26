@@ -52,7 +52,7 @@ button, .boost, .earn {
 
 .progress-bar-container {
   position: absolute;
-  bottom: 20px; /* Подняли прогресс-бар выше */
+  bottom: 20px;
   left: 0;
   width: 100%;
   padding: 0 20px;
@@ -73,7 +73,7 @@ button, .boost, .earn {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: orange; /* Изначальный цвет прогресса */
+  background-color: orange;
 }
 
 .progress-bar__fill {
@@ -81,7 +81,7 @@ button, .boost, .earn {
   top: 0;
   right: 0;
   height: 100%;
-  background-color: black; /* Цвет по мере уменьшения прогресса */
+  background-color: black;
   transition: width 0.25s;
 }
 
@@ -90,20 +90,13 @@ button, .boost, .earn {
   text-align: center;
   color: white;
 }
-/* Добавьте это в конец файла App.css */
-.coin-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1; /* Это заставляет контейнер занимать доступное пространство */
-}
-/* Добавьте это в конец файла App.css */
+
 .coin-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  margin-top: -150px; /* Поднимает контейнер с монетой выше */
+  height: calc(100vh - 140px);
 }
 
   
