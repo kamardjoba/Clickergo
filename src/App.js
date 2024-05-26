@@ -154,6 +154,10 @@ function App() {
     setIsModalOpen(true);
   };
 
+  const handleReferal = () => {
+    alert('Refer a friend and earn rewards!');
+  };
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
@@ -187,6 +191,7 @@ function App() {
         <div className="controls">
           <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
           <div className="earn" onClick={handleEarn}>Earn 💰</div>
+          <div className="referal" onClick={handleReferal}>Referal 👻</div>
         </div>
         {isShopOpen && (
             <Shop

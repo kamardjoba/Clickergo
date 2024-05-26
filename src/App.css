@@ -27,7 +27,7 @@
   right: 20px;
 }
 
-button, .boost, .earn {
+button, .boost, .earn, .referal {
   margin: 5px;
   padding: 10px 20px;
   font-size: 16px;
@@ -40,12 +40,12 @@ button, .boost, .earn {
   transition: background 0.3s, transform 0.3s;
 }
 
-.boost:hover, .earn:hover {
+.boost:hover, .earn:hover, .referal:hover {
   background: linear-gradient(135deg, #ff6600, #ff3300);
   transform: translateY(-2px);
 }
 
-.boost, .earn {
+.boost, .earn, .referal {
   display: flex;
   align-items: center;
   justify-content: center;
