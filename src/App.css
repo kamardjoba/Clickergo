@@ -9,24 +9,25 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
   text-align: center;
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Ensure elements are spaced correctly */
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Use 100vh to ensure full height */
   overflow: hidden;
-  margin: 0;
 }
 
 .App-header {
-  padding: 0;
+  padding: 20px;
   flex-grow: 0;
   display: flex;
   flex-direction: column;
@@ -38,14 +39,14 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5rem; /* Увеличили размер текста */
+  font-size: 5rem; /* Uвеличили размер текста */
   color: white;
 }
 
 .coin-display img {
-  width: 7.5rem; /* Увеличили размер иконки на 50% */
+  width: 7.5rem; /* Uвеличили размер иконки на 50% */
   height: 7.5rem;
-  margin-right: 10px; /* Отступ между иконкой и текстом */
+  margin-right: 10px; /* Oтступ между иконкой и текстом */
 }
 
 .controls {
@@ -136,3 +137,4 @@ button, .boost, .earn, .referal {
   height: calc(100vh - 400px); /* Подняли монету выше */
   padding-top: 20px;
 }
+
