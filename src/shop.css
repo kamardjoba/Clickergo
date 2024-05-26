@@ -15,24 +15,28 @@
     margin-top: 10px;
   }
 
-#CoinPerTap{
-  background: blue;
-  width: 100%;
-  text-align: center;
-}
+  #CoinPerTap{
+    background: #282C34;
+    width: 20%;
+    text-align: center;
+    border-radius: 10px;
+    color:white;
+  }
 
-#BuyCoinPerTapMenu{
-  background: red;
-  text-align: center;
-}
+  #BuyCoinPerTapMenu{
+  
+    background: #5b5e64;
+    text-align: center;
+    border-radius: 10px;
+  }
 
-#CoinPerTapInfo{
-  width: 50%;
-  background: plum;
-  float: left;
-  text-align: center;
-  margin: 0;
-}
+  #CoinPerTapInfo{
+    width: 50%;
+    background: #525356;
+    float: left;
+    text-align: center;
+    margin: 0;
+  }
 
 #MainInfo{
 	font-size: 48px;
