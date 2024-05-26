@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Coin from './components/Coin';
-import Shop from './components/Shop';
+import Coin from './coin';
+import Shop from './shop';
 import './App.css';
 
 function App() {
