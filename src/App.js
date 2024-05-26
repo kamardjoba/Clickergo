@@ -53,7 +53,7 @@ function App() {
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
       setCoins(coins + coinPerClick);
-      setClicks(clicks + 1);
+      setClicks(clicks + coinPerClick);  // Увеличиваем количество кликов в зависимости от coinPerClick
     }
   };
 
