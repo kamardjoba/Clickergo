@@ -1,5 +1,5 @@
 .App {
-    
+    text-align: center;
   }
   
   .App-header {
@@ -19,7 +19,4 @@
     font-size: 16px;
   }
   
-  .body{
-    margin: 0;
-    text-align: center;
-  }
+  

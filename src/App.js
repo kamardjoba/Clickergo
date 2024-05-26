@@ -49,9 +49,10 @@ function App() {
       setupgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
   };
+
   
   return (
-      <body>
+      <div className="App">
         <header className="App-header">
           <h1>Кликер Игра</h1>
           <p>Монеты: {coins}</p>
@@ -77,7 +78,7 @@ function App() {
                 onUpgradeEnergy={handleUpgradeEnergy}
             />
         )}
-      </body>
+      </div>
   );
 }
 
