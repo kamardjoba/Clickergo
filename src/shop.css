@@ -15,18 +15,21 @@
   .shop button {
     margin-top: 10px;
   }
-#CoinPerTap{
-  background: blue;
-  height: 100vh;
-  width: 100%;
-}
+  #CoinPerTap{
+    background: blue;
+    width: 100%;
+    text-align: center;
+  }
 
 #BuyCoinPerTapMenu{
-  float: left;
   background: red;
+  text-align: center;
 }
 
 #CoinPerTapInfo{
   width: 50%;
   background: plum;
+  float: left;
+  text-align: center;
+  
 }
