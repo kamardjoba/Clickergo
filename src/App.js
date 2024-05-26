@@ -103,8 +103,10 @@ function App() {
           <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
           <div className="earn">Earn 💰</div>
         </div>
-        <ProgressBar current={clicks} max={clickLimit} />
-        <p>{clicks} / {clickLimit}</p>
+        <div className="progress-bar-container">
+          <ProgressBar current={clicks} max={clickLimit} />
+          <p>{clicks} / {clickLimit}</p>
+        </div>
         {isShopOpen && (
             <Shop
                 coins={coins}
