@@ -99,7 +99,7 @@ function App() {
           <p>Монет за клик: {coinPerClick}</p>
         </header>
         <div className="coin-container">
-          <Coin onClick={handleCoinClick} />
+          <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} />
         </div>
         <div className="progress-bar-container">
           <ProgressBar current={clicks} max={clickLimit} />

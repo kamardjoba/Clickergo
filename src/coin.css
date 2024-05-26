@@ -5,6 +5,7 @@
     margin: 20px auto;
     transition: transform 0.2s; /* Плавный переход */
     perspective: 1000px; /* Дает эффект 3D */
+    position: relative; /* Для позиционирования вылетающего текста */
 }
 
 .coin img {
@@ -12,4 +13,13 @@
     height: 100%;
     display: block;
     transform-style: preserve-3d; /* Сохраняет 3D-преобразование */
+}
+
+.click-value {
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
 }

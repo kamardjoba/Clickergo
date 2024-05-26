@@ -1,16 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import coinImage from './coin.png';
 import './coin.css';
 
-const Coin = ({ onClick }) => {
+const Coin = ({ onClick, coinPerClick }) => {
+  const [clicks, setClicks] = useState([]);
 
   const handleMouseDown = (event) => {
     const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left; // X-coordinate relative to the coin
-    const y = event.clientY - rect.top;  // Y-coordinate relative to the coin
-    const rotateX = ((y / rect.height) - 0.5) * -20; // Rotate in Y axis
-    const rotateY = ((x / rect.width) - 0.5) * 20;  // Rotate in X axis
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const rotateX = ((y / rect.height) - 0.5) * -20;
+    const rotateY = ((x / rect.width) - 0.5) * 20;
 
     event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   };
@@ -19,15 +20,45 @@ const Coin = ({ onClick }) => {
     event.target.style.transform = 'rotateX(0deg) rotateY(0deg)';
   };
 
+  const handleCoinClick = (event) => {
+    const rect = event.target.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    setClicks((prevClicks) => [
+      ...prevClicks,
+      { id: Date.now(), x, y, value: coinPerClick },
+    ]);
+
+    onClick();
+  };
+
   return (
-      <motion.div
-          className="coin"
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onClick={onClick}
-      >
-        <img src={coinImage} alt="Coin" />
-      </motion.div>
+      <div className="coin-container">
+        <motion.div
+            className="coin"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onClick={handleCoinClick}
+        >
+          <img src={coinImage} alt="Coin" />
+          <AnimatePresence>
+            {clicks.map((click) => (
+                <motion.div
+                    key={click.id}
+                    className="click-value"
+                    initial={{ opacity: 1, y: 0 }}
+                    animate={{ opacity: 0, y: -50 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 2 }}
+                    style={{ top: click.y, left: click.x }}
+                >
+                  +{click.value}
+                </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
   );
 };
 
