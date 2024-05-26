@@ -6,6 +6,9 @@ import Modal from './modal';
 import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
 import './App.css';
 
+
+
+
 function App() {
   const [coins, setCoins] = useState(() => {
     const savedCoins = localStorage.getItem('coins');
