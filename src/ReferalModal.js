@@ -12,10 +12,12 @@ const ReferalModal = ({ userId, onClose }) => {
         <div className="modal">
             <div className="modal-content">
                 <h2>Ваш реферальный код</h2>
-                <p className="referral-code">{userId}</p>
-                <button className="copy-button" onClick={handleCopy}>
-                    <FaCopy className="copy-icon" /> Скопировать код
-                </button>
+                <div className="referral-container">
+                    <span className="referral-code">{userId}</span>
+                    <button className="copy-button" onClick={handleCopy}>
+                        <FaCopy className="copy-icon" />
+                    </button>
+                </div>
                 <button className="close-button" onClick={onClose}>Закрыть</button>
             </div>
         </div>
