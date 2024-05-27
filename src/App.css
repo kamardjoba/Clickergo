@@ -82,7 +82,7 @@ button, .boost, .earn, .referal {
 
 .progress-bar-container p {
   margin: 0;
-  text-align: left; /* Выровняем текст по левому краю */
+  text-align: center; /* Выровняем текст по левому краю */
   color: white;
   width: 100%; /* Убедимся, что текст занимает всю ширину контейнера */
 }

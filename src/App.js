@@ -3,17 +3,43 @@ import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
 import Modal from './modal';
-import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
+import ReferalModal from './ReferalModal';
 import './App.css';
+import coinImage from './CoinUp.png'; // Обновите путь к вашей иконке монеты
+
 
 function App() {
+  useEffect(() => {
+    const metaViewport = document.createElement('meta');
+    metaViewport.name = "viewport";
+    metaViewport.content = "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no";
+    document.head.appendChild(metaViewport);
+
+    if (window.Telegram.WebApp) {
+      window.Telegram.WebApp.ready();
+      window.Telegram.WebApp.expand();
+    }
+
+    const handleResize = () => {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      document.head.removeChild(metaViewport);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const [coins, setCoins] = useState(() => {
     const savedCoins = localStorage.getItem('coins');
     return savedCoins ? parseInt(savedCoins, 10) : 0;
   });
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isReferalOpen, setIsReferalOpen] = useState(false); // Состояние для окна реферального кода
+  const [isReferalOpen, setIsReferalOpen] = useState(false);
   const [clicks, setClicks] = useState(() => {
     const savedClicks = localStorage.getItem('clicks');
     return savedClicks ? parseInt(savedClicks, 10) : 1000;
@@ -61,7 +87,7 @@ function App() {
     if (savedTimestamp) {
       const lastUpdate = parseInt(savedTimestamp, 10);
       const currentTime = Date.now();
-      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000); // Время, прошедшее в интервалах по 3 секунды
+      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000);
       const additionalClicks = timeDiff * coinPerClick;
       setClicks(prevClicks => Math.min(prevClicks + additionalClicks, clickLimit));
     }
@@ -198,7 +224,6 @@ function App() {
       return;
     }
 
-    // Обработка реферального кода
     fetch('/referral', {
       method: 'POST',
       headers: {
@@ -221,24 +246,39 @@ function App() {
         });
   };
 
+  useEffect(() => {
+    const coinElement = document.querySelector('.coin-container');
+    const handleTouchStart = (event) => {
+      handleCoinClick();
+      event.preventDefault();
+    };
+    coinElement.addEventListener('touchstart', handleTouchStart);
+    return () => {
+      coinElement.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, [clicks, coinPerClick]);
+
   return (
       <div className="App">
         <header className="App-header">
           <h1>Кликер Игра</h1>
-          <p>Монеты: {coins}</p>
+          <div className="coin-display">
+            <img src={coinImage} alt="Coin" />
+            <span>{coins}</span>
+          </div>
           <p>Монет за клик: {coinPerClick}</p>
         </header>
         <div className="coin-container">
           <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} clicks={clicks} />
         </div>
         <div className="progress-bar-container">
-          <ProgressBar current={clicks} max={clickLimit} />
           <p>{clicks} / {clickLimit}</p>
-        </div>
-        <div className="controls">
-          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
-          <div className="earn" onClick={handleEarn}>Earn 💰</div>
-          <div className="referal" onClick={handleReferal}>Referal 👻</div>
+          <ProgressBar current={clicks} max={clickLimit} />
+          <div className="controls">
+            <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
+            <div className="earn" onClick={handleEarn}>Earn 💰</div>
+            <div className="referal" onClick={handleReferal}>Referal 👻</div>
+          </div>
         </div>
         {isShopOpen && (
             <Shop
