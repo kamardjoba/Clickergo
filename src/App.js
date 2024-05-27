@@ -1,12 +1,10 @@
-// App.js
 import React, { useState, useEffect } from 'react';
 import Coin from './coin';
 import Shop from './shop';
 import ProgressBar from './ProgressBar';
 import Modal from './modal';
-import ReferalModal from './ReferalModal';
+import ReferalModal from './ReferalModal'; // Импортируем новое модальное окно
 import './App.css';
-import coinImage from './CoinUp.png'; // Обновите путь к вашей иконке монеты
 
 function App() {
   const [coins, setCoins] = useState(() => {
@@ -15,7 +13,7 @@ function App() {
   });
   const [isShopOpen, setIsShopOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isReferalOpen, setIsReferalOpen] = useState(false);
+  const [isReferalOpen, setIsReferalOpen] = useState(false); // Состояние для окна реферального кода
   const [clicks, setClicks] = useState(() => {
     const savedClicks = localStorage.getItem('clicks');
     return savedClicks ? parseInt(savedClicks, 10) : 1000;
@@ -63,7 +61,7 @@ function App() {
     if (savedTimestamp) {
       const lastUpdate = parseInt(savedTimestamp, 10);
       const currentTime = Date.now();
-      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000);
+      const timeDiff = Math.floor((currentTime - lastUpdate) / 3000); // Время, прошедшее в интервалах по 3 секунды
       const additionalClicks = timeDiff * coinPerClick;
       setClicks(prevClicks => Math.min(prevClicks + additionalClicks, clickLimit));
     }
@@ -112,6 +110,15 @@ function App() {
 
     return () => clearInterval(interval);
   }, [coinPerClick, clickLimit]);
+
+  useEffect(() => {
+    // Проверка наличия реферального кода в URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const referralCode = urlParams.get('ref');
+    if (referralCode && referralCode !== userId) {
+      handleReferralClick(referralCode);
+    }
+  }, [userId]);
 
   const checkSubscription = async () => {
     try {
@@ -200,6 +207,7 @@ function App() {
       return;
     }
 
+    // Обработка реферального кода
     fetch('/referral', {
       method: 'POST',
       headers: {
@@ -210,8 +218,8 @@ function App() {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            setCoins(coins + 3000);
-            alert('Вы и ваш друг получили по 3000 монет!');
+            setCoins(prevCoins => prevCoins + 300);
+            alert('Вы и ваш друг получили по 300 монет!');
           } else {
             alert('Ошибка при обработке реферального кода.');
           }
@@ -226,23 +234,20 @@ function App() {
       <div className="App">
         <header className="App-header">
           <h1>Кликер Игра</h1>
-          <div className="coin-display">
-            <img src={coinImage} alt="Coin" />
-            <span>{coins}</span>
-          </div>
+          <p>Монеты: {coins}</p>
           <p>Монет за клик: {coinPerClick}</p>
         </header>
         <div className="coin-container">
           <Coin onClick={handleCoinClick} coinPerClick={coinPerClick} clicks={clicks} />
         </div>
         <div className="progress-bar-container">
-          <p>{clicks} / {clickLimit}</p>
           <ProgressBar current={clicks} max={clickLimit} />
-          <div className="controls">
-            <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
-            <div className="earn" onClick={handleEarn}>Earn 💰</div>
-            <div className="referal" onClick={handleReferal}>Referal 👻</div>
-          </div>
+          <p>{clicks} / {clickLimit}</p>
+        </div>
+        <div className="controls">
+          <div className="boost" onClick={handleOpenShop}>Boost 🚀</div>
+          <div className="earn" onClick={handleEarn}>Earn 💰</div>
+          <div className="referal" onClick={handleReferal}>Referal 👻</div>
         </div>
         {isShopOpen && (
             <Shop
