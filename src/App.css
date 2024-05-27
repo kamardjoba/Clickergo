@@ -9,25 +9,24 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 }
 
 .App {
   text-align: center;
   position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensure elements are spaced correctly */
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
   width: 100vw;
-  height: 100vh; /* Use 100vh to ensure full height */
+  height: 100vh;
   overflow: hidden;
+  margin: 0;
 }
 
 .App-header {
-  padding: 20px;
+  padding: 0;
   flex-grow: 0;
   display: flex;
   flex-direction: column;
@@ -39,14 +38,14 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5rem; /* Uвеличили размер текста */
+  font-size: 5rem; /* Увеличили размер текста */
   color: white;
 }
 
 .coin-display img {
-  width: 7.5rem; /* Uвеличили размер иконки на 50% */
+  width: 7.5rem; /* Увеличили размер иконки на 50% */
   height: 7.5rem;
-  margin-right: 10px; /* Oтступ между иконкой и текстом */
+  margin-right: 10px; /* Отступ между иконкой и текстом */
 }
 
 .controls {
@@ -90,7 +89,36 @@ button, .boost, .earn, .referal {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Выровняем элементы по левому краю */
+  align-items: flex-start; /* Выровняем элементы по левому краю */
+}
+
+.progress-bar {
+  width: 90%; /* Уменьшили ширину до 90% */
+  height: 30px;
+  background-color: transparent;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-right: 5%; /* Убедились, что отступ справа совпадает с левым */
+  position: relative;
+}
+
+.progress-bar__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+}
+
+.progress-bar__fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: black;
+  transition: width 0.25s;
 }
 
 .progress-bar-container p {
@@ -108,4 +136,3 @@ button, .boost, .earn, .referal {
   height: calc(100vh - 400px); /* Подняли монету выше */
   padding-top: 20px;
 }
-
