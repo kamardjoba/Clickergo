@@ -19,16 +19,8 @@ function App() {
       window.Telegram.WebApp.expand();
     }
 
-    const handleResize = () => {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
     return () => {
       document.head.removeChild(metaViewport);
-      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
