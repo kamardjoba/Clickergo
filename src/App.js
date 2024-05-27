@@ -9,6 +9,7 @@ import logo from './b.png';
 function App() {
 
   return (
+  <body>
     <div class="App">
       <div class = "info">
         <img src={Icon} alt="Icon"/>
@@ -30,21 +31,22 @@ function App() {
             </div>
           </div>
         </div>
-      <div class="CoinInfo">			
-        <img src={coinIcon} alt="Coin" height = "90%" />
-        <p> 1000</p>			
-      </div>
-      <img src={coinImage} alt="Coin" height = "50%"/>
-      <div class = "lower">
-        <div class = "lowerDiv">
-          <img src={logo} alt="Bifclif"/>
-          <p>Shop</p>
-          <p>🔋</p>
-          <p>🚀</p>
+        <div class="CoinInfo">			
+          <img src={coinIcon} alt="Coin" height = "90%" />
+          <p> 1000</p>			
+        </div>
+        <img src={coinImage} alt="Coin" height = "50%"/>
+        <div class = "lower">
+          <div class = "lowerDiv">
+            <img src={logo} alt="Bifclif"/>
+            <p>Shop</p>
+            <p>🔋</p>
+            <p>🚀</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </body>
   );
 }
 
