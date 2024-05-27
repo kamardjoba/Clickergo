@@ -30,12 +30,11 @@ function App() {
             </div>
           </div>
         </div>
-      
       <div class="CoinInfo">			
-        <img src={coinIcon} alt="Coin"/>
+        <img src={coinIcon} alt="Coin" height = "90%" />
         <p> 1000</p>			
       </div>
-      <img id ="Coin" src={coinImage} alt="Coin"/>
+      <img src={coinImage} alt="Coin" height = "50%"/>
       <div class = "lower">
         <div class = "lowerDiv">
           <img src={logo} alt="Bifclif"/>
