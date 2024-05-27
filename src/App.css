@@ -31,17 +31,17 @@
 }
 
 .coin-display img {
-  width: 7.5rem; /* Увеличили размер иконки на 50% */
-  height: 7.5rem;
+  width: 5rem; /* Увеличили размер иконки до размера текста */
+  height: 5rem;
   margin-right: 10px; /* Отступ между иконкой и текстом */
 }
 
 .controls {
   display: flex;
-  justify-content: flex-end; /* Выровняли кнопки вправо */
+  justify-content: flex-start; /* Выровняли кнопки влево */
   position: absolute;
   bottom: 30px; /* Подняли кнопки, чтобы они лежали на прогресс-баре */
-  right: 20px; /* Отступ справа */
+  left: 20px; /* Отступ слева */
   width: calc(90% - 20px); /* Убедились, что ширина соответствует прогресс-бару */
 }
 
@@ -77,7 +77,7 @@ button, .boost, .earn, .referal {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Выровняем элементы по левому краю */
+  align-items: center; /* Выровняем элементы по левому краю */
 }
 
 
