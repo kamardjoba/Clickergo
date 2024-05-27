@@ -1,4 +1,16 @@
 /* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
   position: relative;
@@ -14,7 +26,7 @@
 }
 
 .App-header {
-  padding: 20px;
+  padding: 0;
   flex-grow: 0;
   display: flex;
   flex-direction: column;
@@ -38,17 +50,17 @@
 
 .controls {
   display: flex;
-  justify-content: flex-end; /* Выровняли кнопки вправо */
+  justify-content: flex-end;
   position: absolute;
   bottom: 30px; /* Подняли кнопки, чтобы они лежали на прогресс-баре */
-  right: 20px; /* Отступ справа */
-  width: calc(90% - 20px); /* Убедились, что ширина соответствует прогресс-бару */
+  left: 30%; /* Переместили кнопки на 10% вправо */
+  width: 60%; /* Убедились, что ширина соответствует прогресс-бару */
 }
 
 button, .boost, .earn, .referal {
-  margin: 0 5px; /* Добавили пространство между кнопками */
-  padding: 8px 12px; /* Уменьшили размер кнопок */
-  font-size: 14px; /* Уменьшили размер текста */
+  margin: 0 2px; /* Минимальное расстояние между кнопками */
+  padding: 5.6px 8.4px; /* Уменьшили размер кнопок на 30% */
+  font-size: 9.8px; /* Уменьшили размер текста на 30% */
   cursor: pointer;
   border: none;
   border-radius: 10px;
@@ -80,20 +92,12 @@ button, .boost, .earn, .referal {
   align-items: flex-start; /* Выровняем элементы по левому краю */
 }
 
-.progress-bar {
-  width: 90%; /* Уменьшили ширину до 90% */
-  height: 30px;
-  background-color: transparent;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-top: 10px;
-  margin-right: 5%; /* Убедились, что отступ справа совпадает с левым */
-  position: relative;
+.progress-bar-container p {
+  margin: 0;
+  text-align: left; /* Выровняем текст по левому краю */
+  color: white;
+  width: 100%; /* Убедимся, что текст занимает всю ширину контейнера */
 }
-
-
-
-
 
 .coin-container {
   display: flex;
