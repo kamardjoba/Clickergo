@@ -30,7 +30,7 @@ function App() {
         <img src="CU.png" alt="Coin"></img> 
         <p> 1000</p>			
       </div>
-      <img src="src\C.png" alt="Coin"></img> 
+      <img src="./C.png" alt="Coin"></img> 
       <div class = "lower">
         <div class = "lowerDiv">
           <img src="b.png" alt="Bifclif"></img>
