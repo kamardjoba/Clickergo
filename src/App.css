@@ -1,33 +1,16 @@
 /* App.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
-
 .App {
   text-align: center;
   position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
+  margin: 0;
 }
 
 .App-header {
@@ -51,14 +34,6 @@ html, body {
   width: 7.5rem; /* Увеличили размер иконки на 50% */
   height: 7.5rem;
   margin-right: 10px; /* Отступ между иконкой и текстом */
-}
-
-.coin-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  padding-top: 20px;
 }
 
 .controls {
@@ -139,4 +114,13 @@ button, .boost, .earn, .referal {
   text-align: left; /* Выровняем текст по левому краю */
   color: white;
   width: 100%; /* Убедимся, что текст занимает всю ширину контейнера */
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  height: calc(100vh - 400px); /* Подняли монету выше */
+  padding-top: 20px;
 }
