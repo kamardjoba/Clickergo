@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './shop.css';
 
-const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy }) => {
-    const [currentCoins, setCurrentCoins] = useState(coins);
+const Shop = ({ initialCoins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy }) => {
+    const [coins, setCoins] = useState(initialCoins);
 
     const handleClick = () => {
-        setCurrentCoins(prevCoins => prevCoins + coinPerClick);
+        setCoins(prevCoins => prevCoins + coinPerClick);
     };
 
     return (
@@ -21,7 +21,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
                     <div className="info">
                         <p>Стоимость улучшения: {upgradeCost}</p>
                     </div>
-                    <button onClick={onUpgrade} disabled={currentCoins < upgradeCost}>
+                    <button onClick={onUpgrade} disabled={coins < upgradeCost}>
                         Улучшить
                     </button>
                 </div>
@@ -37,7 +37,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
                     <div className="info">
                         <p>Стоимость улучшения: {upgradeCostEnergy}</p>
                     </div>
-                    <button onClick={onUpgradeEnergy} disabled={currentCoins < upgradeCostEnergy}>
+                    <button onClick={onUpgradeEnergy} disabled={coins < upgradeCostEnergy}>
                         Улучшить
                     </button>
                 </div>
@@ -46,7 +46,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
             <div className="section">
                 <p>Текущие монеты</p>
                 <div className="section-menu">
-                    <p className="main-info">{currentCoins}</p>
+                    <p className="main-info">{coins}</p>
                 </div>
             </div>
 

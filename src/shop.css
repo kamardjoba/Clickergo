@@ -7,7 +7,7 @@
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    max-width: 400px;
+    max-width: 90vw;
     width: 90%;
     color: white;
     text-align: center;
@@ -16,26 +16,26 @@
 
 .shop h2 {
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 5vw; /* Use viewport width for font size */
     color: #ff9a00;
 }
 
 .section, .section-menu {
     background: linear-gradient(135deg, #333, #1e1e1e);
     border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 2vw; /* Use viewport width for padding */
+    margin-bottom: 2vw; /* Use viewport width for margin */
 }
 
 .section p, .info p, .section-menu p {
-    margin: 10px 0;
-    font-size: 18px;
+    margin: 1vw 0; /* Use viewport width for margin */
+    font-size: 4vw; /* Use viewport width for font size */
     color: #ff9a00;
 }
 
 .main-info {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 8vw; /* Use viewport width for font size */
+    margin-bottom: 1vw; /* Use viewport width for margin */
     color: #ff6600;
 }
 
@@ -44,10 +44,10 @@ button {
     border: none;
     border-radius: 10px;
     color: white;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 1.5vw 3vw; /* Use viewport width for padding */
+    font-size: 4vw; /* Use viewport width for font size */
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 1vw; /* Use viewport width for margin */
     transition: background 0.3s, transform 0.3s;
 }
 
@@ -63,7 +63,7 @@ button:disabled {
 
 .close-button {
     background: linear-gradient(135deg, #ff3300, #ff0000);
-    margin-top: 20px;
+    margin-top: 2vw; /* Use viewport width for margin */
 }
 
 .close-button:hover {
