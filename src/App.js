@@ -15,7 +15,7 @@ function App() {
           <div class="halfBox">
             <div class = "halfBoxDiv">
               <p> Coin Tap</p>
-              <p>+1 <img src="CU.png" alt="Coin" class="coin-image"></img></p>
+              <p>+1 <img src="src\CU.png" alt="Coin" class="coin-image"></img></p>
             </div>
           </div>
           <div class="halfBox">
