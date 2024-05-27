@@ -1,52 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import coinImage from './C.png';
-import coinIcon from './CU.png';
-import Icon from './N.png';
-import logo from './b.png';
-
 
 function App() {
+  const [balance, setBalance] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleEarn = () => {
+    // Simulate earning coins (replace with your actual logic)
+    setBalance(balance + 1);
+  };
+
+  const handleBoost = () => {
+    // Simulate boosting earnings (replace with your actual logic)
+    setBalance(balance * 2);
+  };
+
+  const handleClaim = () => {
+    // Simulate claiming coins (replace with your actual logic)
+    setShowPopup(false);
+  };
 
   return (
-  <body>
-    <div class="App">
-      <div class = "info">
-        <img src={Icon} alt="Icon"/>
-        <p> Name </p>
-        <img src={logo} alt="Bifclif"/>
+    <div className="app">
+      <div className="header">
+        <div className="balance">
+          <h1>{balance}</h1>
+          <span>NOT</span>
+        </div>
+        <button className="claim-button" onClick={() => setShowPopup(true)}>
+          Claim
+        </button>
       </div>
-      <div class = "main">
-        <div class="mainInfo">
-          <div class="halfBox">
-            <div class = "halfBoxDiv">
-              <p> Coin Tap</p>
-              <p>+1 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
-            </div>
-          </div>
-          <div class="halfBox">
-            <div class = "halfBoxDiv">
-              <p> Coin per hour</p>
-              <p>+0 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
-            </div>
-          </div>
-        </div>
-        <div class="CoinInfo">			
-          <img src={coinIcon} alt="Coin" height = "90%" />
-          <p> 1000</p>			
-        </div>
-        <img src={coinImage} alt="Coin" height = "50%"/>
-        <div class = "lower">
-          <div class = "lowerDiv">
-            <img src={logo} alt="Bifclif"/>
-            <p>Shop</p>
-            <p>🔋</p>
-            <p>🚀</p>
-          </div>
-        </div>
+
+      <div className="actions">
+        <button className="earn-button" onClick={handleEarn}>
+          Earn
+        </button>
+        <button className="boost-button" onClick={handleBoost}>
+          Boost
+        </button>
       </div>
+
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <p>You have earned {balance} NOT!</p>
+            <button className="claim-button" onClick={handleClaim}>
+              Claim
+            </button>
+          </div>
+        </div>
+      )}
     </div>
-  </body>
   );
 }
 
