@@ -92,6 +92,11 @@ button, .boost, .earn, .referal {
   align-items: flex-start; /* Выровняем элементы по левому краю */
 }
 
+
+
+
+
+
 .progress-bar-container p {
   margin: 0;
   text-align: left; /* Выровняем текст по левому краю */

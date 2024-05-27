@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>Кликер Игра</title>
-    <link rel="stylesheet" href="App.css">
+    <!-- Добавьте другие необходимые мета-теги и стили -->
 </head>
 <body>
 <div id="root"></div>
+<!-- Скрипты вашего приложения -->
+<script src="App.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    Telegram.WebApp.expand();
+    Telegram.WebApp.ready();
+</script>
 </body>
 </html>
