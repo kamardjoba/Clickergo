@@ -1,5 +1,5 @@
 import React from 'react';
-import './CoinDisplay.css';
+import './App.css';
 
 const CoinDisplay = () => {
   return (
