@@ -1,16 +1,29 @@
 /* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Ensure elements are spaced correctly */
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
   width: 100vw;
-  height: 100vh;
+  height: 100vh; /* Use 100vh to ensure full height */
   overflow: hidden;
-  margin: 0;
 }
 
 .App-header {
@@ -26,29 +39,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5rem; /* Увеличили размер текста */
+  font-size: 5rem; /* Uвеличили размер текста */
   color: white;
 }
 
 .coin-display img {
-  width: 5rem; /* Увеличили размер иконки до размера текста */
-  height: 5rem;
-  margin-right: 10px; /* Отступ между иконкой и текстом */
+  width: 7.5rem; /* Uвеличили размер иконки на 50% */
+  height: 7.5rem;
+  margin-right: 10px; /* Oтступ между иконкой и текстом */
 }
 
 .controls {
   display: flex;
-  justify-content: flex-start; /* Выровняли кнопки влево */
+  justify-content: flex-end;
   position: absolute;
   bottom: 30px; /* Подняли кнопки, чтобы они лежали на прогресс-баре */
-  left: 20px; /* Отступ слева */
-  width: calc(90% - 20px); /* Убедились, что ширина соответствует прогресс-бару */
+  left: 30%; /* Переместили кнопки на 10% вправо */
+  width: 60%; /* Убедились, что ширина соответствует прогресс-бару */
 }
 
 button, .boost, .earn, .referal {
-  margin: 0 5px; /* Добавили пространство между кнопками */
-  padding: 8px 12px; /* Уменьшили размер кнопок */
-  font-size: 14px; /* Уменьшили размер текста */
+  margin: 0 2px; /* Минимальное расстояние между кнопками */
+  padding: 5.6px 8.4px; /* Уменьшили размер кнопок на 30% */
+  font-size: 9.8px; /* Уменьшили размер текста на 30% */
   cursor: pointer;
   border: none;
   border-radius: 10px;
@@ -77,14 +90,37 @@ button, .boost, .earn, .referal {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Выровняем элементы по левому краю */
+  align-items: flex-start; /* Выровняем элементы по левому краю */
 }
 
+.progress-bar {
+  width: 90%; /* Уменьшили ширину до 90% */
+  height: 30px;
+  background-color: transparent;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-right: 5%; /* Убедились, что отступ справа совпадает с левым */
+  position: relative;
+}
 
+.progress-bar__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+}
 
-
-
-
+.progress-bar__fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: black;
+  transition: width 0.25s;
+}
 
 .progress-bar-container p {
   margin: 0;
@@ -101,3 +137,4 @@ button, .boost, .earn, .referal {
   height: calc(100vh - 400px); /* Подняли монету выше */
   padding-top: 20px;
 }
+
