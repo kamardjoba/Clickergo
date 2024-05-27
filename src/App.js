@@ -1,58 +1,34 @@
-import React, { useState } from 'react';
-import './App.css';
+import React from 'react';
+import './CoinDisplay.css';
 
-function App() {
-  const [balance, setBalance] = useState(0);
-  const [showPopup, setShowPopup] = useState(false);
-
-  const handleEarn = () => {
-    // Simulate earning coins (replace with your actual logic)
-    setBalance(balance + 1);
-  };
-
-  const handleBoost = () => {
-    // Simulate boosting earnings (replace with your actual logic)
-    setBalance(balance * 2);
-  };
-
-  const handleClaim = () => {
-    // Simulate claiming coins (replace with your actual logic)
-    setShowPopup(false);
-  };
-
+const CoinDisplay = () => {
   return (
-    <div className="app">
-      <div className="header">
-        <div className="balance">
-          <h1>{balance}</h1>
-          <span>NOT</span>
+    <div className="coin-display">
+      <div className="coin-header">
+        <div className="coin-count">951,673</div>
+        <div className="coin-rank">
+          <span>266,350th</span>
+          <span className="gold-trophy">🏆 Gold</span>
         </div>
-        <button className="claim-button" onClick={() => setShowPopup(true)}>
-          Claim
-        </button>
       </div>
-
-      <div className="actions">
-        <button className="earn-button" onClick={handleEarn}>
-          Earn
-        </button>
-        <button className="boost-button" onClick={handleBoost}>
-          Boost
-        </button>
-      </div>
-
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <p>You have earned {balance} NOT!</p>
-            <button className="claim-button" onClick={handleClaim}>
-              Claim
-            </button>
-          </div>
+      <div className="coin-icon">
+        <div className="icon-circle">
+          <div className="icon-triangle">△</div>
         </div>
-      )}
+      </div>
+      <div className="energy-bar">
+        <span className="energy-icon">⚡</span> 3606
+        <div className="energy-progress">
+          <div className="energy-filled" style={{ width: '50%' }}></div>
+        </div>
+      </div>
+      <div className="bottom-menu">
+        <div className="menu-item">Friends</div>
+        <div className="menu-item">Earn</div>
+        <div className="menu-item">Boosts</div>
+      </div>
     </div>
   );
 }
 
-export default App;
+export default CoinDisplay;
