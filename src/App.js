@@ -111,15 +111,6 @@ function App() {
     return () => clearInterval(interval);
   }, [coinPerClick, clickLimit]);
 
-  useEffect(() => {
-    // Проверка наличия реферального кода в URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const referralCode = urlParams.get('ref');
-    if (referralCode && referralCode !== userId) {
-      handleReferralClick(referralCode);
-    }
-  }, [userId]);
-
   const checkSubscription = async () => {
     try {
       const response = await fetch('/check-subscription', {
@@ -218,8 +209,8 @@ function App() {
         .then(response => response.json())
         .then(data => {
           if (data.success) {
-            setCoins(prevCoins => prevCoins + 300);
-            alert('Вы и ваш друг получили по 300 монет!');
+            setCoins(coins + 3000);
+            alert('Вы и ваш друг получили по 3000 монет!');
           } else {
             alert('Ошибка при обработке реферального кода.');
           }
