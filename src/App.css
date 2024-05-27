@@ -11,16 +11,22 @@ html, body {
   overflow: hidden;
 }
 
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
 .App {
   text-align: center;
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #000000, #ff9a00);
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
 
@@ -45,6 +51,14 @@ html, body {
   width: 7.5rem; /* Увеличили размер иконки на 50% */
   height: 7.5rem;
   margin-right: 10px; /* Отступ между иконкой и текстом */
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding-top: 20px;
 }
 
 .controls {
@@ -91,18 +105,38 @@ button, .boost, .earn, .referal {
   align-items: flex-start; /* Выровняем элементы по левому краю */
 }
 
+.progress-bar {
+  width: 90%; /* Уменьшили ширину до 90% */
+  height: 30px;
+  background-color: transparent;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-right: 5%; /* Убедились, что отступ справа совпадает с левым */
+  position: relative;
+}
+
+.progress-bar__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: orange;
+}
+
+.progress-bar__fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  background-color: black;
+  transition: width 0.25s;
+}
+
 .progress-bar-container p {
   margin: 0;
   text-align: left; /* Выровняем текст по левому краю */
   color: white;
   width: 100%; /* Убедимся, что текст занимает всю ширину контейнера */
-}
-
-.coin-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  height: calc(100vh - 400px); /* Подняли монету выше */
-  padding-top: 20px;
 }
