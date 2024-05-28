@@ -1,6 +1,6 @@
 /* ProgressBar.css */
 .progress-bar {
-    width: 80%; 
+    width: 90%; 
     height: 30px;
     background-color: transparent;
     border-radius: 15px;
@@ -12,12 +12,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: orange; /* Изначальный цвет прогресса */
+    
+    background-color: black; /* Изначальный цвет прогресса */
 }
 
 .progress-bar__fill {
     position: absolute;
     height: 100%;
-    background-color: black; /* Цвет по мере уменьшения прогресса */
+    background-color: orange;
+    /* Цвет по мере уменьшения прогресса */
     transition: width 0.25s;
 }
