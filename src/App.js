@@ -9,9 +9,9 @@ import logo from './b.png';
 function App() {
 
   const [coins, setCoins] = useState(0);
-  const [coinPerClick, setCoinPerClick] = useState(1);
+  const coinPerClick = 1;
   const [clicks, setClicks] = useState(0);
-  const [clickLimit, setLimitEnergy] = useState(1000);
+  const clickLimit = 1000;
 
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
