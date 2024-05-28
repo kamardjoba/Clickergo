@@ -1,53 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import coinImage from './C.png';
-import coinIcon from './CU.png';
-import Icon from './N.png';
-import logo from './b.png';
 
-
-function App() {
-
+const CoinDisplay = () => {
   return (
-  <body>
-    <div class="App">
-      <div class = "info">
-        <img src={Icon} alt="Icon"/>
-        <p> Name </p>
-        <img src={logo} alt="Bifclif"/>
+    <div className="coin-display">
+      <div className="coin-header">
+        <div className="coin-count">951,673</div>
+        <div className="coin-rank">
+          <span>266,350th</span>
+          <span className="gold-trophy">🏆 Gold</span>
+        </div>
       </div>
-      <div class = "main">
-        <div class="mainInfo">
-          <div class="halfBox">
-            <div class = "halfBoxDiv">
-              <p> Coin Tap</p>
-              <p>+1 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
-            </div>
-          </div>
-          <div class="halfBox">
-            <div class = "halfBoxDiv">
-              <p> Coin per hour</p>
-              <p>+0 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
-            </div>
-          </div>
+      <div className="coin-icon">
+        <div className="icon-circle">
+          <div className="icon-triangle">△</div>
         </div>
-        <div class="CoinInfo">			
-          <img src={coinIcon} alt="Coin" height = "90%" />
-          <p> 1000</p>			
+      </div>
+      <div className="energy-bar">
+        <span className="energy-icon">⚡</span> 3606
+        <div className="energy-progress">
+          <div className="energy-filled" style={{ width: '50%' }}></div>
         </div>
-        <img src={coinImage} alt="Coin" height = "50%"/>
-        <div class = "lower">
-          <div class = "lowerDiv">
-            <img src={logo} alt="Bifclif"/>
-            <p>Shop</p>
-            <p>🔋</p>
-            <p>🚀</p>
-          </div>
-        </div>
+      </div>
+      <div className="bottom-menu">
+        <div className="menu-item">Friends</div>
+        <div className="menu-item">Earn</div>
+        <div className="menu-item">Boosts</div>
       </div>
     </div>
-  </body>
   );
 }
 
-export default App;
+export default CoinDisplay;
