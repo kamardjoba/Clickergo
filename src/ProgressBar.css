@@ -7,7 +7,6 @@
     overflow: hidden;
     margin-top: 20px;
     margin-right: 5%; /* Добавили отступ справа */
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
