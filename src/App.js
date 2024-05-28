@@ -39,8 +39,8 @@ function App() {
           </div>
           <div class="halfBox">
             <div class = "halfBoxDiv">
-              <p> Coin per hour</p>
-              <p>+0 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
+              <p> Energy </p>
+              <p>{clickLimit} / {clickLimit-clicks}⚡</p>
             </div>
           </div>
         </div>
