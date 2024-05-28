@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import coinImage from './C.png';
+import CoinPNG from './Coin';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
 
 
 function App() {
+
+  const [coins, setCoins] = useState(0);
+  const [isShopOpen, setIsShopOpen] = useState(false);
+  const [clicks, setClicks] = useState(0);
+
+  const handleCoinClick = () => {
+    if (clicks < clickLimit) {
+      setCoins(coins + coinPerClick);
+      setClicks(clicks + 1);
+    }
+  };
 
   return (
   <body>
@@ -33,9 +44,9 @@ function App() {
         </div>
         <div class="CoinInfo">			
           <img src={coinIcon} alt="Coin" height = "90%" />
-          <p> 1000</p>			
+          <p>{coins}</p>			
         </div>
-        <img src={coinImage} alt="Coin" height = "50%"/>
+        <CoinPNG onClick={handleCoinClick} />
         <div class = "lower">
           <div class = "lowerDiv">
             <img src={logo} alt="Bifclif"/>
