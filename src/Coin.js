@@ -4,12 +4,7 @@ import coinImage from './C.png';
 
 const Coin = ({ onClick }) => {
   return (
-    <motion.div
-      className="coin"
-      onClick={onClick}
-      whileTap={{ rotate: [0, 360] }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div className="coin" onClick={onClick}>
       <img src={coinImage} alt="Coin" height="50%"/>
     </motion.div>
 
