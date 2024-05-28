@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-import CoinPNG from './Coin';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
