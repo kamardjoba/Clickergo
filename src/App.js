@@ -4,6 +4,7 @@ import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
 import coinImage from './C.png';
+import ProgressBar from './ProgressBar';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         </div>
           <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
         <div class="Progress">
+          <ProgressBar current={clicks} max={clickLimit} />
 		    </div>
         <div class = "lower">
           <div class = "lowerDiv">
