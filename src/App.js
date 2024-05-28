@@ -4,6 +4,7 @@ import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
 import coinImage from './C.png';
+import BB from './BB.png';
 import ProgressBar from './ProgressBar';
 
 
@@ -40,7 +41,7 @@ function App() {
           <div class="halfBox">
             <div class = "halfBoxDiv">
               <p> Energy </p>
-              <p>{clickLimit} / {clickLimit-clicks}<img src="BB.png" alt="Battery" class="coin-image"/></p>
+              <p>{clickLimit} / {clickLimit-clicks}<img src={BB} alt="Battery" class="coin-image"/></p>
             </div>
           </div>
         </div>
