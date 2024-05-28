@@ -33,14 +33,14 @@ function App() {
         <div class="mainInfo">
           <div class="halfBox">
             <div class = "halfBoxDiv">
-              <p> Coin Tap</p>
-              <p>+1 <img src={coinIcon} alt="Coin" class="coin-image"/></p>
+              <p> Coin Per Tap</p>
+              <p>+{coinPerClick} <img src={coinIcon} alt="Coin" class="coin-image"/></p>
             </div>
           </div>
           <div class="halfBox">
             <div class = "halfBoxDiv">
               <p> Energy </p>
-              <p>{clickLimit} / {clickLimit-clicks}⚡</p>
+              <p>{clickLimit} / {clickLimit-clicks}<img src="BB.png" alt="Battery" class="coin-image"/></p>
             </div>
           </div>
         </div>
