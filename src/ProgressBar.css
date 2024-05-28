@@ -1,13 +1,7 @@
 /* ProgressBar.css */
 .progress-bar {
     width: 100%; /* Уменьшили ширину до 95% */
-    height: 10%;
-    background-color: transparent;
-    border-radius: 15px;
-    overflow: hidden;
-    margin-top: 20px;
-    margin-right: 5%; /* Добавили отступ справа */
-
+    height: 100%;
 }
 
 .progress-bar__background {
