@@ -6,7 +6,8 @@ const ProgressBar = ({ current, max }) => {
 
     return (
         <div className="progress-bar">
-           
+            <div className="progress-bar__background"></div>
+            <div className="progress-bar__fill" style={{ width: `${100 - percentage}%` }}></div>
         </div>
     );
 };

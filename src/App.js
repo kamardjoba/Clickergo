@@ -49,7 +49,9 @@ function App() {
           <p>{coins}</p>			
         </div>
           <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
-          <ProgressBar current={clicks} max={clickLimit} />
+        <div class="Progress">
+        <ProgressBar current={clicks} max={clickLimit} />
+		    </div>
         <div class = "lower">
           <div class = "lowerDiv">
             <img src={logo} alt="Bifclif"/>
