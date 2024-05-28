@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import CoinPNG from './Coin';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
+import coinImage from './C.png';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
           <img src={coinIcon} alt="Coin" height = "90%" />
           <p>{coins}</p>			
         </div>
-        <CoinPNG onClick={handleCoinClick} />
+          <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
         <div class = "lower">
           <div class = "lowerDiv">
             <img src={logo} alt="Bifclif"/>
