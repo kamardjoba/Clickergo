@@ -23,8 +23,18 @@ function App() {
   const [clickLimit, setClickLimit] = useState(1000);
   const [energyNow, setEnergyNow] = useState(1000);
 
+
   const [isShopOpen, setIsShopOpen] = useState(false);
 
+  //Нажатие на монету
+  const handleCoinClick = () => {
+  if (energyNow >= coinPerClick) {
+    setCoins(coins + coinPerClick);
+    setClicks(clicks + 1);
+    setEnergyNow(energyNow - coinPerClick);
+  }
+};
+  
   //Востановления енергиї
   useEffect(() => {
     const interval = setInterval(() => {
@@ -95,7 +105,7 @@ function App() {
           <img src={coinIcon} alt="Coin" height = "90%" />
           <p>{coins}</p>			
         </div>
-          <Coindiv clicks={clicks} coinPerClick={coinPerClick} coins={coins} setCoins={setCoins} setClicks={setClicks} setEnergyNow={setEnergyNow}/> 
+          <Coindiv onClick={handleCoinClick} /> 
         <div class="Progress">
         <ProgressBar current={energyNow} max={clickLimit} />
 		    </div>
