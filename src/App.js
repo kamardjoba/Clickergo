@@ -26,6 +26,15 @@ function App() {
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
+  //Нажатие на монету
+  const handleCoinClick = () => {
+    if (energyNow >= coinPerClick) {
+      setCoins(coins + coinPerClick);
+      setClicks(clicks + 1);
+      setEnergyNow(energyNow - coinPerClick);
+    }
+  };
+  
   //Востановления енергиї
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,15 +49,6 @@ function App() {
 
     return () => clearInterval(interval);
   }, [clickLimit]);
-
-  //Нажатие на монету
-  const handleCoinClick = () => {
-    if (energyNow >= coinPerClick) {
-      setCoins(coins + coinPerClick);
-      setClicks(clicks + 1);
-      setEnergyNow(energyNow - coinPerClick);
-    }
-  };
 
   //Прокачка монет за тап
   const CoinPerClickUpgrade = () => {
