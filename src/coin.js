@@ -1,3 +1,4 @@
+import React from 'react';
 import coinImage from './C.png';
 import './coin.css';
 
@@ -9,3 +10,4 @@ return(
 </div>
 )
 };
+export default Coindiv;
