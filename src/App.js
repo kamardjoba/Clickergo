@@ -7,7 +7,7 @@ import logo from './b.png';
 import BB from './BB.png';
 import ProgressBar from './ProgressBar';
 import Shop from './shop';
-import Coin from './coin';
+import Coindiv from './coin';
 
 function App() {
 
@@ -105,7 +105,7 @@ function App() {
           <img src={coinIcon} alt="Coin" height = "90%" />
           <p>{coins}</p>			
         </div>
-          <Coin onClick={handleCoinClick} /> 
+          <Coindiv onClick={handleCoinClick} /> 
         <div class="Progress">
         <ProgressBar current={energyNow} max={clickLimit} />
 		    </div>
