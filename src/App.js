@@ -19,9 +19,11 @@ function App() {
   const [upgradeLevel, setUpgradeLevel] = useState(1);
   const [coinPerClick, setCoinPerClick] = useState(1);
 
-  const clickLimit = 1000;
+  const [upgradeCostEnergy, setUpgradeCostEnergy] = useState(100)
+  const [upgradeLevelEnergy, setUpgradeLevelEnergy] = useState(1)
+  const [clickLimit, setClickLimit] = useState(1000);
   const [energyNow, setEnergyNow] = useState(1000);
-  
+
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
@@ -39,6 +41,15 @@ function App() {
       setCoinPerClick(coinPerClick + 1);
       setUpgradeLevel(upgradeLevel + 1);
       setUpgradeCost(Math.floor(upgradeCost * 1.5));
+    }
+  };
+
+  const EnergyUpgrade = () => {
+    if (coins >= upgradeCostEnergy) {
+      setCoins(coins - upgradeCostEnergy);
+      setClickLimit(clickLimit * 2);
+      setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
+      setUpgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
   };
 
@@ -99,9 +110,13 @@ function App() {
                 upgradeCost={upgradeCost}
                 upgradeLevel={upgradeLevel}
 
+                clickLimit={clickLimit}
+                upgradeCostEnergy={upgradeCostEnergy}
+                upgradeLevelEnergy={upgradeLevelEnergy}
+                
                 onClose={handleCloseShop}
                 onUpgrade={CoinPerClickUpgrade}
-
+                onUpgradeEnergy={EnergyUpgrade}
             />
         )}
 
