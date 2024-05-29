@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import coinIcon from './CU.png';
 import Icon from './N.png';
@@ -52,6 +52,10 @@ function App() {
       setUpgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
   };
+
+  while (energyNow != clickLimit) {
+    energyNow++;
+  }
 
   const handleOpenShop = () => {
     setIsShopOpen(true);

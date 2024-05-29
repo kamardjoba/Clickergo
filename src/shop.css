@@ -1,25 +1,3 @@
-@keyframes slideUp {
-    from {
-      transform: translate(-50%, 100%);
-      opacity: 0;
-    }
-    to {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideDown {
-    from {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-    }
-    to {
-      transform: translate(-50%, 100%);
-      opacity: 0;
-    }
-  }
-
 .shop {
     position: fixed;
     top: 50%;
@@ -34,14 +12,7 @@
     color: white;
     text-align: center;
     z-index: 1000;
-    animation: slideUp 0.5s forwards;
 }
-
-.shop.closing {
-  animation: slideDown 0.5s forwards;
-}
-
-
 
 .shop h2 {
     margin-bottom: 20px;
