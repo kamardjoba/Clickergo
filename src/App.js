@@ -11,13 +11,16 @@ import Shop from './shop';
 
 function App() {
 
-  const [coins, setCoins] = useState(0);
   const [clicks, setClicks] = useState(0);
+
+  const [coins, setCoins] = useState(0);
+
   const [upgradeCost, setUpgradeCost] = useState(10);
   const [upgradeLevel, setUpgradeLevel] = useState(1);
+  const [coinPerClick, setCoinPerClick] = useState(1);
 
   const clickLimit = 1000;
-  const coinPerClick = 1;
+  
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
@@ -28,7 +31,7 @@ function App() {
     }
   };
 
-  const handleUpgrade = () => {
+  const CoinPerClickUpgrade = () => {
     if (coins >= upgradeCost) {
       setCoins(coins - upgradeCost);
       setCoinPerClick(coinPerClick + 1);
@@ -95,7 +98,7 @@ function App() {
                 upgradeLevel={upgradeLevel}
 
                 onClose={handleCloseShop}
-                onUpgrade={handleUpgrade}
+                onUpgrade={CoinPerClickUpgrade}
 
             />
         )}
