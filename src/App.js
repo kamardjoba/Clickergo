@@ -6,20 +6,43 @@ import logo from './b.png';
 import coinImage from './C.png';
 import BB from './BB.png';
 import ProgressBar from './ProgressBar';
+import Shop from './shop';
 
 
 function App() {
 
   const [coins, setCoins] = useState(0);
   const [clicks, setClicks] = useState(0);
+  const [upgradeCost, setUpgradeCost] = useState(10);
+  const [upgradeLevel, setUpgradeLevel] = useState(1);
+
   const clickLimit = 1000;
   const coinPerClick = 1;
+
+  const [isShopOpen, setIsShopOpen] = useState(false);
 
   const handleCoinClick = () => {
     if (clicks < clickLimit) {
       setCoins(coins + coinPerClick);
       setClicks(clicks + 1);
     }
+  };
+
+  const handleUpgrade = () => {
+    if (coins >= upgradeCost) {
+      setCoins(coins - upgradeCost);
+      setCoinPerClick(coinPerClick + 1);
+      setUpgradeLevel(upgradeLevel + 1);
+      setUpgradeCost(Math.floor(upgradeCost * 1.5));
+    }
+  };
+
+  const handleOpenShop = () => {
+    setIsShopOpen(true);
+  };
+
+  const handleCloseShop = () => {
+    setIsShopOpen(false);
   };
 
   return (
@@ -56,13 +79,27 @@ function App() {
         <div class = "lower">
           <div class = "lowerDiv">
             <img src={logo} alt="Bifclif"/>
-            <p>Shop</p>
+            <p onClick={handleOpenShop}>Shop</p>
             <p>🔋</p>
             <p>🚀</p>
           </div>
         </div>
       </div>
     </div>
+
+    {isShopOpen && (
+            <Shop
+                coins={coins}
+                coinPerClick={coinPerClick}
+                upgradeCost={upgradeCost}
+                upgradeLevel={upgradeLevel}
+
+                onClose={handleCloseShop}
+                onUpgrade={handleUpgrade}
+
+            />
+        )}
+
   </body>
   );
 }
