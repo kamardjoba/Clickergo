@@ -2,20 +2,13 @@ import React from 'react';
 import coinImage from './C.png';
 import './coin.css';
 
-const Coindiv = (coinPerClick, clicks, energyNow) => {
+const Coindiv = ( onClick ) => {
 
-//Нажатие на монету
-const handleCoinClick = () => {
-    if (energyNow >= coinPerClick) {
-      setCoins(coins + coinPerClick);
-      setClicks(clicks + 1);
-      setEnergyNow(energyNow - coinPerClick);
-    }
-  };
 
+onClick();
 return(
 <div className='Podsos' >
-    <img src={coinImage} alt="Coin" height="70%" onClick={handleCoinClick}/>
+    <img src={coinImage} alt="Coin" height="70%"/>
 </div>
 )
 };
