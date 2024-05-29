@@ -6,7 +6,7 @@ const Coindiv = () => {
 
 return(
 <div className='Podsos' >
-    <img src={coinImage} alt="Coin" height="50%"/>
+    <img src={coinImage} alt="Coin"/>
 </div>
 )
 };
