@@ -20,6 +20,7 @@ function App() {
   const [coinPerClick, setCoinPerClick] = useState(1);
 
   const clickLimit = 1000;
+  const energyNow = 1000;
   
 
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -28,6 +29,7 @@ function App() {
     if (clicks < clickLimit) {
       setCoins(coins + coinPerClick);
       setClicks(clicks + 1);
+      energyNow - coinPerClick;
     }
   };
 
@@ -67,7 +69,7 @@ function App() {
           <div class="halfBox">
             <div class = "halfBoxDiv">
               <p> Energy </p>
-              <p>{clickLimit} / {clickLimit-clicks}<img src={BB} alt="Battery" class="coin-image"/></p>
+              <p>{clickLimit} / {energyNow}<img src={BB} alt="Battery" class="coin-image"/></p>
             </div>
           </div>
         </div>
@@ -77,12 +79,12 @@ function App() {
         </div>
           <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
         <div class="Progress">
-        <ProgressBar current={clicks} max={clickLimit} />
+        <ProgressBar current={energyNow} max={clickLimit} />
 		    </div>
         <div class = "lower">
           <div class = "lowerDiv">
             <img src={logo} alt="Bifclif"/>
-            <p onClick={handleOpenShop}>Shop</p>
+            <p onClick={handleOpenShop} >Shop</p>
             <p>🔋</p>
             <p>🚀</p>
           </div>
