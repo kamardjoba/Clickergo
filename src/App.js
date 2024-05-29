@@ -26,7 +26,7 @@ function App() {
   const [isShopOpen, setIsShopOpen] = useState(false);
 
   const handleCoinClick = () => {
-    if (clicks < clickLimit) {
+    if (energyNow >= coinPerClick) {
       setCoins(coins + coinPerClick);
       setClicks(clicks + 1);
       setEnergyNow(energyNow - coinPerClick);
