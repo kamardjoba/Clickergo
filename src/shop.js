@@ -9,10 +9,10 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
           <p>Монет за клик</p>
           <div className="section-menu">
             <p className="main-info">{coinPerClick}</p>
-            <div className="info">
+            <div className="inform">
               <p>Уровень улучшения: {upgradeLevel}</p>
             </div>
-            <div className="info">
+            <div className="inform">
               <p>Стоимость улучшения: {upgradeCost}</p>
             </div>
             <button onClick={onUpgrade} disabled={coins < upgradeCost}>
