@@ -27,6 +27,20 @@ function App() {
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setEnergyNow((prevEnergy) => {
+        if (prevEnergy < clickLimit) {
+          return prevEnergy + 1;
+        } else {
+          return prevEnergy;
+        }
+      });
+    }, 500);
+
+    return () => clearInterval(interval);
+  }, [clickLimit]);
+
   const handleCoinClick = () => {
     if (energyNow >= coinPerClick) {
       setCoins(coins + coinPerClick);
@@ -52,10 +66,6 @@ function App() {
       setUpgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
     }
   };
-
-  while (energyNow != clickLimit) {
-    energyNow++;
-  }
 
   const handleOpenShop = () => {
     setIsShopOpen(true);
