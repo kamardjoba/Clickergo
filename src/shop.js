@@ -2,8 +2,19 @@ import React from 'react';
 import './shop.css';
 
 const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy}) => {
+
+  const [closing, setClosing] = useState(false);
+
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => {
+      onClose();
+      setClosing(false);
+    }, 500); // Время анимации должно совпадать с временем в CSS
+  };
+
   return (
-      <div className="shop">
+    <div className={`shop ${closing ? 'closing' : ''}`}>
         <h2>Магазин</h2>
         <div className="section">
           <p>Монет за клик</p>
@@ -36,7 +47,7 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
             </button>
           </div>
         </div>
-        <button onClick={onClose} className="close-button">Закрыть</button>
+        <button onClick={handleClose} className="close-button">Закрыть</button>
       </div>
   );
 };
