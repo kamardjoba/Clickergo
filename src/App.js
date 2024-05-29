@@ -3,16 +3,15 @@ import './App.css';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
-import coinImage from './C.png';
+
 import BB from './BB.png';
 import ProgressBar from './ProgressBar';
 import Shop from './shop';
-
+import Coin from './coin';
 
 function App() {
 
   const [clicks, setClicks] = useState(0);
-
   const [coins, setCoins] = useState(0);
 
   const [upgradeCost, setUpgradeCost] = useState(10);
@@ -27,6 +26,7 @@ function App() {
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
+  //Востановления енергиї
   useEffect(() => {
     const interval = setInterval(() => {
       setEnergyNow((prevEnergy) => {
@@ -36,11 +36,12 @@ function App() {
           return prevEnergy;
         }
       });
-    }, 500);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [clickLimit]);
 
+  //Нажатие на монету
   const handleCoinClick = () => {
     if (energyNow >= coinPerClick) {
       setCoins(coins + coinPerClick);
@@ -49,6 +50,7 @@ function App() {
     }
   };
 
+  //Прокачка монет за тап
   const CoinPerClickUpgrade = () => {
     if (coins >= upgradeCost) {
       setCoins(coins - upgradeCost);
@@ -58,6 +60,7 @@ function App() {
     }
   };
 
+  //Прокачка лимита енергиї
   const EnergyUpgrade = () => {
     if (coins >= upgradeCostEnergy) {
       setCoins(coins - upgradeCostEnergy);
@@ -102,7 +105,7 @@ function App() {
           <img src={coinIcon} alt="Coin" height = "90%" />
           <p>{coins}</p>			
         </div>
-          <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
+          <Coin onClick={handleCoinClick} /> 
         <div class="Progress">
         <ProgressBar current={energyNow} max={clickLimit} />
 		    </div>
