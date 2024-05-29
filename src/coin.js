@@ -10,8 +10,8 @@ const Coindiv = ({ onClick }) => {
         const rect = event.target.getBoundingClientRect();
         const x = touchEvent.clientX - rect.left;
         const y = touchEvent.clientY - rect.top;
-        const rotateX = ((y / rect.height) - 0.5) * -20;
-        const rotateY = ((x / rect.width) - 0.5) * 20;
+        const rotateX = ((y / rect.height) - 0.5) * -80;
+        const rotateY = ((x / rect.width) - 0.5) * 80;
     
         event.target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
       };
@@ -24,8 +24,8 @@ const Coindiv = ({ onClick }) => {
     <motion.div className='Podsos'
                 onMouseDown={handleInteractionStart}
                 onMouseUp={handleInteractionEnd}>
-                    
-      <img src={coinImage} alt="Coin" height="100%" onClick={onClick}/>
+
+      <img src={coinImage} alt="Coin" height="120%" onClick={onClick}/>
     </motion.div>
   );
 };
