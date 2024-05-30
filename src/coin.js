@@ -44,9 +44,9 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
             height="105%" 
             onMouseDown={handleInteractionStart}
             onMouseUp={handleInteractionEnd}
-            
+            onClick={onClick}
             onTouchStart={NumberUpAnim}
-            onTouchEnd={handleInteractionEnd}
+            //onTouchEnd={handleInteractionEnd}
             />
 
       <AnimatePresence>

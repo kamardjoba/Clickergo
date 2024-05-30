@@ -1,4 +1,4 @@
-*{user-select: none;}
+
 
 .Podsos
 { 
@@ -11,6 +11,7 @@
 
 .Podsos img{
     cursor: pointer;
+    user-select: none;
 }
 .click-value {
     position: absolute;
