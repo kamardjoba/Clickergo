@@ -1,6 +1,4 @@
-*{
-    user-select: none;
-  }
+
 
 .Podsos
 { 
@@ -11,9 +9,12 @@
     align-items: center;
 }
 
-.Podsos img{
+.Podsos img {
     cursor: pointer;
-    user-select: none;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;         
 }
 .click-value {
     position: absolute;
