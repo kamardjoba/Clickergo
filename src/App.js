@@ -105,7 +105,7 @@ function App() {
           <img src={coinIcon} alt="Coin" height = "90%" />
           <p>{coins}</p>			
         </div>
-          <Coindiv onClick={handleCoinClick} /> 
+          <Coindiv onClick={handleCoinClick} coinPerClick={coinPerClick} energyNow={energyNow}/> 
         <div class="Progress">
         <ProgressBar current={energyNow} max={clickLimit} />
 		    </div>
