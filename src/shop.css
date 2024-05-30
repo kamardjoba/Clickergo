@@ -1,3 +1,7 @@
+*{
+    user-select: none;
+  }
+
 .shop {
     position: fixed;
     top: 50%;
