@@ -23,7 +23,7 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
 
   const NumberUpAnim = (event) => {
     const touchEvent = event.type === 'touchstart' ? event.touches[0] : event;
-    if (coinPerClick <=  energyNow) return;
+    if (coinPerClick >  energyNow) return;
     
     const rect = event.target.getBoundingClientRect();
     const x = touchEvent.clientX - rect.left;
@@ -45,7 +45,7 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
             onMouseDown={handleInteractionStart}
             onMouseUp={handleInteractionEnd}
             onClick={NumberUpAnim}
-            onTouchStart={(event) => { handleInteractionStart(event); handleCoinClick(event); }}
+            onTouchStart={(event) => { handleInteractionStart(event); NumberUpAnim(event); }}
             onTouchEnd={handleInteractionEnd}
             />
 
