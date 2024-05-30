@@ -21,11 +21,14 @@ const Coindiv = ({ onClick }) => {
       };
 
   return (
-    <motion.div className='Podsos'
-                onMouseDown={handleInteractionStart}
-                onMouseUp={handleInteractionEnd}>
+    <motion.div className='Podsos'>
 
-      <img src={coinImage} alt="Coin" height="105%" onClick={onClick}/>
+      <img  src={coinImage} 
+            alt="Coin" 
+            height="105%" 
+            onClick={onClick}
+            onMouseDown={handleInteractionStart}
+            onMouseUp={handleInteractionEnd}/>
     </motion.div>
   );
 };
