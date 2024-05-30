@@ -42,10 +42,9 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
       <img  src={coinImage} 
             alt="Coin" 
             height="105%" 
-            //onMouseDown={handleInteractionStart}
-            //onMouseUp={handleInteractionEnd}
-            //onClick={NumberUpAnim}
-            onTouch={NumberUpAnim}
+            onMouseDown={handleInteractionStart}
+            onMouseUp={handleInteractionEnd}
+            onClick={NumberUpAnim}
             onTouchEnd={handleInteractionEnd}
             onTouchStart={handleInteractionStart}
             
