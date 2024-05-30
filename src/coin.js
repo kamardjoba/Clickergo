@@ -42,11 +42,11 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
       <img  src={coinImage} 
             alt="Coin" 
             height="105%" 
-            onMouseDown={handleInteractionStart}
-            onMouseUp={handleInteractionEnd}
-            //onClick={onClick}
-            onTouchStart={NumberUpAnim}
-            //onTouchEnd={handleInteractionEnd}
+            //onMouseDown={handleInteractionStart}
+            //onMouseUp={handleInteractionEnd}
+            //onClick={NumberUpAnim}
+            onTouchStart={(event) => { handleInteractionStart(event); NumberUpAnim(event); }}
+            onTouchEnd={handleInteractionEnd}
             />
 
       <AnimatePresence>
