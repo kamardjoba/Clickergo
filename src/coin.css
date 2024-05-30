@@ -7,10 +7,13 @@
     align-items: center;
 }
 
+.Podsos img{
+    cursor: pointer;
+}
 .click-value {
     position: absolute;
     color: white;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
     pointer-events: none;
     user-select: none;
