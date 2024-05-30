@@ -33,7 +33,7 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
     ...prevClicks,
     { id: Date.now(), x, y, value: coinPerClick },
     ]);
-    onClick();
+    
   };
 
   return (
@@ -44,7 +44,7 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
             height="105%" 
             onMouseDown={handleInteractionStart}
             onMouseUp={handleInteractionEnd}
-            onClick={NumberUpAnim}
+            onClick={onClick}
             onTouchStart={(event) => { handleInteractionStart(event); NumberUpAnim(event); }}
             onTouchEnd={handleInteractionEnd}
             />
