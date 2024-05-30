@@ -44,8 +44,8 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
             height="105%" 
             onMouseDown={handleInteractionStart}
             onMouseUp={handleInteractionEnd}
-            onClick={onClick}
-            onTouchStart={(event) => { handleInteractionStart(event); NumberUpAnim(event); }}
+            onClick={NumberUpAnim}
+            onTouchStart={onClick}
             onTouchEnd={handleInteractionEnd}
             />
 
