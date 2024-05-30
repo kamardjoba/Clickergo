@@ -33,7 +33,7 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
     ...prevClicks,
     { id: Date.now(), x, y, value: coinPerClick },
     ]);
-    
+    onClick();
   };
 
   return (
