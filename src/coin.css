@@ -1,5 +1,10 @@
+*{
+    user-select: none;
+}
+
+
 .Podsos
-{
+{ 
     height: 47%;
     width: 100%;
     display: flex;
