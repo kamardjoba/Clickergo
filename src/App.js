@@ -1,103 +1,154 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from 'axios';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
-import coinImage from './C.png';
 import BB from './BB.png';
 import ProgressBar from './ProgressBar';
-import axios from 'axios';
+import Shop from './shop';
+import Coindiv from './coin';
 
 function App() {
   const [userId, setUserId] = useState(null);
-  const [coins, setCoins] = useState(0);
-  const [clicks, setClicks] = useState(0);
-  const clickLimit = 1000;
-  const coinPerClick = 1;
+  const [userData, setUserData] = useState({
+    coins: 0,
+    clicks: 0,
+    upgradeCost: 10,
+    upgradeLevel: 1,
+    coinPerClick: 1,
+    upgradeCostEnergy: 100,
+    upgradeLevelEnergy: 1,
+    clickLimit: 1000,
+    energyNow: 1000
+  });
 
   useEffect(() => {
-    const telegram = window.Telegram.WebApp;
-    const telegramId = telegram.initDataUnsafe.user.id;
-
-    const registerUser = async () => {
-      const response = await axios.post('http://localhost:5000/register', { telegramId });
-      setUserId(response.data.userId);
+    const fetchUserData = async () => {
+      const telegramId = getTelegramId(); // Функция для получения telegramId пользователя
+      setUserId(telegramId);
+      const response = await axios.post('/api/user', { telegramId });
+      setUserData(response.data);
     };
-
-    const loadData = async () => {
-      const storedUserId = localStorage.getItem('userId');
-      if (storedUserId) {
-        setUserId(storedUserId);
-        const response = await axios.get(`http://localhost:5000/load/${storedUserId}`);
-        setCoins(response.data.coins);
-        setClicks(response.data.clicks);
-      } else {
-        registerUser().then(() => {
-          localStorage.setItem('userId', userId);
-        });
-      }
-    };
-
-    loadData();
-  }, [userId]);
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     if (userId) {
-      axios.post('http://localhost:5000/save', { userId, coins, clicks });
+      const saveUserData = async () => {
+        await axios.put('/api/user', { telegramId: userId, userData });
+      };
+      saveUserData();
     }
-  }, [coins, clicks, userId]);
+  }, [userData, userId]);
 
   const handleCoinClick = () => {
-    if (clicks < clickLimit) {
-      setCoins(coins + coinPerClick);
-      setClicks(clicks + 1);
+    if (userData.energyNow >= userData.coinPerClick) {
+      setUserData({
+        ...userData,
+        coins: userData.coins + userData.coinPerClick,
+        clicks: userData.clicks + 1,
+        energyNow: userData.energyNow - userData.coinPerClick
+      });
     }
   };
 
+  const CoinPerClickUpgrade = () => {
+    if (userData.coins >= userData.upgradeCost) {
+      setUserData({
+        ...userData,
+        coins: userData.coins - userData.upgradeCost,
+        coinPerClick: userData.coinPerClick + 1,
+        upgradeLevel: userData.upgradeLevel + 1,
+        upgradeCost: Math.floor(userData.upgradeCost * 1.5)
+      });
+    }
+  };
+
+  const EnergyUpgrade = () => {
+    if (userData.coins >= userData.upgradeCostEnergy) {
+      setUserData({
+        ...userData,
+        coins: userData.coins - userData.upgradeCostEnergy,
+        clickLimit: userData.clickLimit * 2,
+        upgradeLevelEnergy: userData.upgradeLevelEnergy + 1,
+        upgradeCostEnergy: Math.floor(userData.upgradeCostEnergy * 1.5)
+      });
+    }
+  };
+
+  const handleOpenShop = () => {
+    setIsShopOpen(true);
+  };
+
+  const handleCloseShop = () => {
+    setIsShopOpen(false);
+  };
+
   return (
-      <body>
-      <div class="App">
-        <div class = "info">
+      <div className="App">
+        <div className="info">
           <img src={Icon} alt="Icon"/>
           <p> Name </p>
           <img src={logo} alt="Bifclif"/>
         </div>
-        <div class = "main">
-          <div class="mainInfo">
-            <div class="halfBox">
-              <div class = "halfBoxDiv">
+        <div className="main">
+          <div className="mainInfo">
+            <div className="halfBox">
+              <div className="halfBoxDiv">
                 <p> Coin Per Tap</p>
-                <p>+{coinPerClick} <img src={coinIcon} alt="Coin" class="coin-image"/></p>
+                <p>+{userData.coinPerClick} <img src={coinIcon} alt="Coin" className="coin-image"/></p>
               </div>
             </div>
-            <div class="halfBox">
-              <div class = "halfBoxDiv">
+            <div className="halfBox">
+              <div className="halfBoxDiv">
                 <p> Energy </p>
-                <p>{clickLimit} / {clickLimit-clicks}<img src={BB} alt="Battery" class="coin-image"/></p>
+                <p>{userData.clickLimit} / {userData.energyNow}<img src={BB} alt="Battery" className="coin-image"/></p>
               </div>
             </div>
           </div>
-          <div class="CoinInfo">
-            <img src={coinIcon} alt="Coin" height = "90%" />
-            <p>{coins}</p>
+          <div className="CoinInfo">
+            <img src={coinIcon} alt="Coin" height="90%" />
+            <p>{userData.coins}</p>
           </div>
-          <img src={coinImage} onClick={handleCoinClick} alt="Coin" height="50%"/>
-          <div class="Progress">
-            <ProgressBar current={clicks} max={clickLimit} />
+          <Coindiv onClick={handleCoinClick} coinPerClick={userData.coinPerClick} energyNow={userData.energyNow}/>
+          <div className="Progress">
+            <ProgressBar current={userData.energyNow} max={userData.clickLimit} />
           </div>
-          <div class = "lower">
-            <div class = "lowerDiv">
-              <img src={logo} alt="Bifclif"/>
-              <p>Shop</p>
-              <p>🔋</p>
-              <p>🚀</p>
+          <div className="lower">
+            <div className="lowerDiv">
+              <div className="BTNLOW">
+                <img src={logo} alt="Bifclif" height="65%" />
+              </div>
+              <div className="BTNLOW">
+                <p onClick={handleOpenShop}>Shop</p>
+              </div>
+              <div className="BTNLOW">
+                <p>🔋</p>
+              </div>
+              <div className="BTNLOW">
+                <p>🚀</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      </body>
-  );
 
+        {isShopOpen && (
+            <Shop
+                coins={userData.coins}
+                coinPerClick={userData.coinPerClick}
+                upgradeCost={userData.upgradeCost}
+                upgradeLevel={userData.upgradeLevel}
+                clickLimit={userData.clickLimit}
+                upgradeCostEnergy={userData.upgradeCostEnergy}
+                upgradeLevelEnergy={userData.upgradeLevelEnergy}
+                onClose={handleCloseShop}
+                onUpgrade={CoinPerClickUpgrade}
+                onUpgradeEnergy={EnergyUpgrade}
+            />
+        )}
+      </div>
+  );
 }
 
 export default App;

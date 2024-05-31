@@ -1,0 +1,28 @@
+.Podsos
+{ 
+    height: 47%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Podsos img {
+    
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;         
+}
+.click-value {
+    position: absolute;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+}
+
+#omar{
+    filter: drop-shadow(0px 0px 15px #060927);
+}
