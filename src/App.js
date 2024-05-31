@@ -22,6 +22,9 @@ function App() {
   const [clickLimit, setClickLimit] = useState(1000);
   const [energyNow, setEnergyNow] = useState(1000);
 
+  const [upgradeCostEnergyTime, setUpgradeCostEnergyTime] = useState(200)
+  const [valEnergiTime, setvalEnergiTime] = useState(1)
+  const [upgradeEnergyTimeLevel, setupgradeEnergyTimeLevel] = useState(1)
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
@@ -39,7 +42,7 @@ function App() {
     const interval = setInterval(() => {
       setEnergyNow((prevEnergy) => {
         if (prevEnergy < clickLimit) {
-          return prevEnergy + 1;
+          return prevEnergy + valEnergiTime;
         } else {
           return prevEnergy;
         }
@@ -66,6 +69,16 @@ function App() {
       setClickLimit(clickLimit * 2);
       setUpgradeLevelEnergy(upgradeLevelEnergy + 1);
       setUpgradeCostEnergy(Math.floor(upgradeCostEnergy * 1.5));
+    }
+  };
+
+  //Прокачка востановления енергії
+  const EnergyTimeUpgrade = () => {
+    if (coins >= upgradeCostEnergyTime) {
+      setCoins(coins - upgradeCostEnergyTime);
+      setvalEnergiTime(valEnergiTime + 1);
+      setupgradeEnergyTimeLevel(upgradeEnergyTimeLevel + 1);
+      setUpgradeCostEnergyTime(Math.floor(upgradeCostEnergyTime * 1.5));
     }
   };
 
@@ -137,10 +150,15 @@ function App() {
                 clickLimit={clickLimit}
                 upgradeCostEnergy={upgradeCostEnergy}
                 upgradeLevelEnergy={upgradeLevelEnergy}
+
+                upgradeCostEnergyTime={upgradeCostEnergyTime}
+                valEnergiTime={valEnergiTime}
+                upgradeEnergyTimeLevel={upgradeEnergyTimeLevel}
                 
                 onClose={handleCloseShop}
                 onUpgrade={CoinPerClickUpgrade}
                 onUpgradeEnergy={EnergyUpgrade}
+                onUpgradeEnergyTime={EnergyTimeUpgrade}
             />
         )}
 

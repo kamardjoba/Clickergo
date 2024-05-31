@@ -1,7 +1,10 @@
 import React from 'react';
 import './shop.css';
 
-const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy}) => {
+const Shop = ({ coins, onClose, 
+                onUpgrade, coinPerClick, upgradeLevel, upgradeCost, 
+                onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy,
+                onUpgradeEnergyTime, valEnergiTime, upgradeEnergyTimeLevel, upgradeCostEnergyTime  }) => {
   return (
       <div className="shop">
         <div class="zagolovok">
@@ -48,14 +51,14 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
             <p>Востановления енергиї</p>
           </div>
           <div className="section-menu">
-            <p>{clickLimit}</p>
+            <p>{valEnergiTime} в секунду</p>
             <div className="inform">
-              <p>Уровень улучшения: {upgradeLevelEnergy}</p>
+              <p>Уровень улучшения: {upgradeEnergyTimeLevel}</p>
             </div>
             <div className="inform">
-              <p>Стоимость улучшения: {upgradeCostEnergy}</p>
+              <p>Стоимость улучшения: {upgradeCostEnergyTime}</p>
             </div>
-            <button onClick={onUpgradeEnergy} disabled={coins < upgradeCostEnergy}>
+            <button onClick={onUpgradeEnergyTime} disabled={coins < upgradeCostEnergy}>
               Улучшить
             </button>
           </div>
