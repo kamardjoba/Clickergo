@@ -23,9 +23,9 @@ function App() {
   const [energyNow, setEnergyNow] = useState(1000);
 
   const [upgradeCostEnergyTime, setUpgradeCostEnergyTime] = useState(200)
-  const [valEnergyTime, setvalEnergyTime] = useState(2000)
+  const [valEnergyTime, setvalEnergyTime] = useState(0.5)
   const [upgradeEnergyTimeLevel, setupgradeEnergyTimeLevel] = useState(1)
-  const [energiPerSek, setEnergiPerSek] = useState(0,5)
+  const [time, setTime] = useState(2000)
 
   const [isShopOpen, setIsShopOpen] = useState(false);
 
@@ -48,10 +48,10 @@ function App() {
         return energyNow;
       }
     });
-  }, valEnergyTime);
+  }, time);
 
   return () => clearInterval(interval);
-}, [clickLimit, valEnergyTime]);
+}, [clickLimit, time]);
 
   //Прокачка монет за тап
   const CoinPerClickUpgrade = () => {
@@ -77,9 +77,9 @@ function App() {
   const EnergyTimeUpgrade = () => {
     if (coins >= upgradeCostEnergyTime) {
       setCoins(coins - upgradeCostEnergyTime);
-      setvalEnergyTime(valEnergyTime * 0,5);
+      setvalEnergyTime(valEnergyTime * 2);
       setupgradeEnergyTimeLevel(upgradeEnergyTimeLevel + 1);
-      setEnergiPerSek(energiPerSek * 2);
+      setTime(time / 2);
       setUpgradeCostEnergyTime(Math.floor(upgradeCostEnergyTime * 1.5));
     }
   };
@@ -156,7 +156,6 @@ function App() {
                 upgradeCostEnergyTime={upgradeCostEnergyTime}
                 valEnergyTime={valEnergyTime}
                 upgradeEnergyTimeLevel={upgradeEnergyTimeLevel}
-                energiPerSek={energiPerSek}
                 
                 onClose={handleCloseShop}
                 onUpgrade={CoinPerClickUpgrade}
