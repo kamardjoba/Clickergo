@@ -45,8 +45,8 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
             //onMouseDown={handleInteractionStart}
             //onMouseUp={handleInteractionEnd}
             //onClick={onClick}
-            onTouchEnd={handleInteractionEnd}
-            onTouchStart={(event) => { handleInteractionStart(event); NumberUpAnim(event); }}
+            onTouchEnd={(event) => {handleInteractionEnd(event); NumberUpAnim(event); }}
+            onTouchStart={handleInteractionStart}
             
             />
 
@@ -56,9 +56,9 @@ const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
               key={click.id}
               className="click-value"
               initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 0, y: -50 }}
+              animate={{ opacity: 0, y: -150 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 2 }}
+              transition={{ duration: 2, ease: "ease" }}   
               style={{ top: click.y, left: click.x }}
             >
               +{click.value}
