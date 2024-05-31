@@ -4,9 +4,6 @@
 
 .shop {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background: linear-gradient(135deg, #1e1e1e, #333);
     padding: 20px;
     border-radius: 15px;
