@@ -129,11 +129,6 @@ body {
   border-radius: 15px;
   color: Black;
   font-weight: bold;
-  font-size: 32px;
-}
-
-.lowerDiv p {
-  cursor: pointer;
 }
 
 .BTNLOW{
@@ -144,6 +139,7 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  font-size: 24px;
 }
 
 .Progress{
