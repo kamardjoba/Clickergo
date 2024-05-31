@@ -39,18 +39,18 @@ function App() {
   
   //Востановления енергиї
   useEffect(() => {
-    const interval = setInterval(() => {
-      setEnergyNow((energyNow) => {
-        if (energyNow < clickLimit) {
-          return energyNow + valEnergyTime;
-        } else {
-          return energyNow;
-        }
-      });
-    }, 1500);
+  const interval = setInterval(() => {
+    setEnergyNow((energyNow) => {
+      if (energyNow < clickLimit) {
+        return energyNow + valEnergyTime;
+      } else {
+        return energyNow;
+      }
+    });
+  }, 1500);
 
-    return () => clearInterval(interval);
-  }, [clickLimit]);
+  return () => clearInterval(interval);
+}, [clickLimit, valEnergyTime]);
 
   //Прокачка монет за тап
   const CoinPerClickUpgrade = () => {

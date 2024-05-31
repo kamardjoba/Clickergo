@@ -58,7 +58,7 @@ const Shop = ({ coins, onClose,
             <div className="inform">
               <p>Стоимость улучшения: {upgradeCostEnergyTime}</p>
             </div>
-            <button onClick={onUpgradeEnergyTime} disabled={coins < upgradeCostEnergy}>
+            <button onClick={onUpgradeEnergyTime} disabled={coins < upgradeCostEnergyTime}>
               Улучшить
             </button>
           </div>
