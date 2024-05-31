@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import coinImage from './C.png';
+import coinImage from './8nog.png';
 import './coin.css';
 
 const Coindiv = ({ onClick, coinPerClick, energyNow}) => {
