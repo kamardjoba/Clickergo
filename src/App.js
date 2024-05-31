@@ -23,7 +23,7 @@ function App() {
   const [energyNow, setEnergyNow] = useState(1000);
 
   const [upgradeCostEnergyTime, setUpgradeCostEnergyTime] = useState(200)
-  const [valEnergiTime, setvalEnergiTime] = useState(1)
+  const [valEnergyTime, setvalEnergyTime] = useState(1)
   const [upgradeEnergyTimeLevel, setupgradeEnergyTimeLevel] = useState(1)
 
   const [isShopOpen, setIsShopOpen] = useState(false);
@@ -40,11 +40,11 @@ function App() {
   //Востановления енергиї
   useEffect(() => {
     const interval = setInterval(() => {
-      setEnergyNow((prevEnergy) => {
-        if (prevEnergy < clickLimit) {
-          return prevEnergy + valEnergiTime;
+      setEnergyNow((energyNow) => {
+        if (energyNow < clickLimit) {
+          return energyNow + valEnergyTime;
         } else {
-          return prevEnergy;
+          return energyNow;
         }
       });
     }, 1500);
@@ -76,7 +76,7 @@ function App() {
   const EnergyTimeUpgrade = () => {
     if (coins >= upgradeCostEnergyTime) {
       setCoins(coins - upgradeCostEnergyTime);
-      setvalEnergiTime(valEnergiTime + 1);
+      setvalEnergyTime(valEnergyTime + 1);
       setupgradeEnergyTimeLevel(upgradeEnergyTimeLevel + 1);
       setUpgradeCostEnergyTime(Math.floor(upgradeCostEnergyTime * 1.5));
     }
@@ -152,7 +152,7 @@ function App() {
                 upgradeLevelEnergy={upgradeLevelEnergy}
 
                 upgradeCostEnergyTime={upgradeCostEnergyTime}
-                valEnergiTime={valEnergiTime}
+                valEnergyTime={valEnergyTime}
                 upgradeEnergyTimeLevel={upgradeEnergyTimeLevel}
                 
                 onClose={handleCloseShop}
