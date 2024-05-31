@@ -40,6 +40,14 @@
     border-radius: 10px;
     box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     height: 70%;  
+<<<<<<< HEAD
+=======
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+>>>>>>> fd640f5bb3e6f6549522a5387b306cbef019c61e
 }
 
 .hz{
@@ -52,7 +60,11 @@
 }
 
 .section-menu p {
+<<<<<<< HEAD
     margin: 8px;
+=======
+    margin: 0px;
+>>>>>>> fd640f5bb3e6f6549522a5387b306cbef019c61e
     font-size: 18px;
     color: #060927;
     font-weight: bold;
