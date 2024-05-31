@@ -111,10 +111,18 @@ function App() {
 		    </div>
         <div class = "lower">
           <div class = "lowerDiv">
-            <img src={logo} alt="Bifclif"/>
-            <p onClick={handleOpenShop} >Shop</p>
-            <p>🔋</p>
-            <p>🚀</p>
+            <div class="BTNLOW">
+              <img src={logo} alt="Bifclif"/>
+            <div/>
+            <div class="BTNLOW">
+              <p onClick={handleOpenShop} >Shop</p>
+            </div>
+            <div class="BTNLOW">
+              <p>🔋</p>
+            </div>
+            <div class="BTNLOW">
+              <p>🚀</p>
+            </div>
           </div>
         </div>
       </div>
