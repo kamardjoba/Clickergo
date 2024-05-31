@@ -1,14 +1,7 @@
 import React from 'react';
 import './shop.css';
 
-<<<<<<< HEAD
 const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy}) => {
-=======
-const Shop = ({ coins, onClose, 
-                onUpgrade, coinPerClick, upgradeLevel, upgradeCost, 
-                onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy,
-                onUpgradeEnergyTime, valEnergyTime, upgradeEnergyTimeLevel, upgradeCostEnergyTime  }) => {
->>>>>>> fd640f5bb3e6f6549522a5387b306cbef019c61e
   return (
       <div className="shop">
         <div class="zagolovok">
@@ -55,7 +48,6 @@ const Shop = ({ coins, onClose,
             <p>Востановления енергиї</p>
           </div>
           <div className="section-menu">
-<<<<<<< HEAD
             <p>{clickLimit}</p>
             <div className="inform">
               <p>Уровень улучшения: {upgradeLevelEnergy}</p>
@@ -64,16 +56,6 @@ const Shop = ({ coins, onClose,
               <p>Стоимость улучшения: {upgradeCostEnergy}</p>
             </div>
             <button onClick={onUpgradeEnergy} disabled={coins < upgradeCostEnergy}>
-=======
-            <p>{valEnergyTime} в секунду</p>
-            <div className="inform">
-              <p>Уровень улучшения: {upgradeEnergyTimeLevel}</p>
-            </div>
-            <div className="inform">
-              <p>Стоимость улучшения: {upgradeCostEnergyTime}</p>
-            </div>
-            <button onClick={onUpgradeEnergyTime} disabled={coins <upgradeCostEnergyTime}>
->>>>>>> fd640f5bb3e6f6549522a5387b306cbef019c61e
               Улучшить
             </button>
           </div>
