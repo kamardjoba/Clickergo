@@ -4,11 +4,15 @@ import './shop.css';
 const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgrade, onUpgradeEnergy, clickLimit, upgradeLevelEnergy, upgradeCostEnergy}) => {
   return (
       <div className="shop">
-        <h2>Магазин</h2>
+        <div class="zagolovok">
+        <p>Магазин</p>
+        </div>
         <div className="section">
-          <p>Монет за клик</p>
+          <div className='hz'>
+            <p>Монет за клик</p>
+          </div>
           <div className="section-menu">
-            <p className="main-info">{coinPerClick}</p>
+            <p>{coinPerClick}</p>
             <div className="inform">
               <p>Уровень улучшения: {upgradeLevel}</p>
             </div>
@@ -22,9 +26,11 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
         </div>
 
         <div className="section">
-          <p>Энергия</p>
+          <div className='hz'>
+            <p>Энергия</p>
+          </div>
           <div className="section-menu">
-            <p className="main-info">{clickLimit}</p>
+            <p>{clickLimit}</p>
             <div className="inform">
               <p>Уровень улучшения: {upgradeLevelEnergy}</p>
             </div>
@@ -36,7 +42,27 @@ const Shop = ({ coins, coinPerClick, upgradeCost, upgradeLevel, onClose, onUpgra
             </button>
           </div>
         </div>
+
+        <div className="section">
+          <div className='hz'>
+            <p>Востановления енергиї</p>
+          </div>
+          <div className="section-menu">
+            <p>{clickLimit}</p>
+            <div className="inform">
+              <p>Уровень улучшения: {upgradeLevelEnergy}</p>
+            </div>
+            <div className="inform">
+              <p>Стоимость улучшения: {upgradeCostEnergy}</p>
+            </div>
+            <button onClick={onUpgradeEnergy} disabled={coins < upgradeCostEnergy}>
+              Улучшить
+            </button>
+          </div>
+        </div>
+        <div class="zagolovok">
         <button onClick={onClose} className="close-button">Закрыть</button>
+        </div>
       </div>
   );
 };
