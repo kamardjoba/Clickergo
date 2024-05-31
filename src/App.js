@@ -112,7 +112,7 @@ function App() {
         <div class = "lower">
           <div class = "lowerDiv">
             <div class="BTNLOW">
-              <img src={logo} alt="Bifclif" height = "70%" />
+              <img src={logo} alt="Bifclif" height = "65%" />
             </div>
             <div class="BTNLOW">
               <p onClick={handleOpenShop} >Shop</p>
