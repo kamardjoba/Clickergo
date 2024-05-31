@@ -3,7 +3,6 @@ import './App.css';
 import coinIcon from './CU.png';
 import Icon from './N.png';
 import logo from './b.png';
-
 import BB from './BB.png';
 import ProgressBar from './ProgressBar';
 import Shop from './shop';
